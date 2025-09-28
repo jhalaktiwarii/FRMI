@@ -1,65 +1,324 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 
-interface ServiceCardProps {
-  imageSrc: string;
-  title: string;
-  description: string;
-}
+// High-quality 4K images for real estate services
+const serviceImages = {
+  buyerRep: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80",
+  sellerRep: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+  transaction: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2053&q=80",
+  valuation: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+  synergy: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+};
 
-const services: ServiceCardProps[] = [
-  {
-    imageSrc: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/fb03db6c-5ef0-4c5d-a106-339f02e1dcca-housepluss-framer-website/assets/images/WoYpopCGq2Wmr2pB4xK1lqdSLvc-12.png",
-    title: "Property Listings",
-    description: "Explore exclusive, high-end properties in prime locations, handpicked for discerning buyers seeking luxury homes.",
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3,
+    },
   },
-  {
-    imageSrc: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/fb03db6c-5ef0-4c5d-a106-339f02e1dcca-housepluss-framer-website/assets/images/hxepYnvDhVO5ozqSB81Lr3XvIiE-13.png",
-    title: "Real Estate Consultancy",
-    description: "Tailored guidance from expert consultants to help you find and invest in your dream luxury estate.",
-  },
-  {
-    imageSrc: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/fb03db6c-5ef0-4c5d-a106-339f02e1dcca-housepluss-framer-website/assets/images/CSNzNvXprIXJqTL48RDUXjFGbQ-14.png",
-    title: "Property Management",
-    description: "Comprehensive management services ensuring the seamless upkeep, security, and value of your prestigious property.",
-  },
-];
+};
 
-const ServiceCard = ({ imageSrc, title, description }: ServiceCardProps) => (
-  <div className="relative rounded-2xl overflow-hidden bg-dark-gray h-[480px]">
-    <Image
-      src={imageSrc}
-      alt={`${title} service`}
-      fill
-      className="object-cover opacity-50 absolute inset-0"
-    />
-    <div className="relative z-10 flex flex-col justify-end h-full p-10 gap-4">
-      <h4 className="text-[32px] font-medium text-pure-white leading-tight">
-        {title}
-      </h4>
-      <p className="text-lg text-pure-white/70 leading-normal">
-        {description}
-      </p>
-    </div>
-  </div>
-);
+const sectionVariants = {
+  hidden: { 
+    opacity: 0, 
+    y: 60,
+    scale: 0.95,
+  },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.8,
+      ease: [0.25, 0.46, 0.45, 0.94],
+    },
+  },
+};
+
+const ServiceCard = ({ 
+  imageSrc, 
+  title, 
+  points, 
+  cta, 
+  isLeft = true 
+}: { 
+  imageSrc: string; 
+  title: string; 
+  points: string[]; 
+  cta: string; 
+  isLeft?: boolean;
+}) => {
+  return (
+    <motion.div
+      variants={sectionVariants}
+      className={`flex flex-col lg:flex-row items-center gap-8 ${isLeft ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}
+    >
+      {/* Image Section */}
+      <div className="w-full lg:w-1/2">
+        <motion.div
+          whileHover={{ scale: 1.02, y: -5 }}
+          transition={{ duration: 0.3 }}
+          className="relative rounded-2xl overflow-hidden shadow-2xl group"
+        >
+          <Image
+            src={imageSrc}
+            alt={title}
+            width={600}
+            height={400}
+            className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        </motion.div>
+      </div>
+
+      {/* Content Section */}
+      <div className="w-full lg:w-1/2 space-y-6">
+        <motion.h3 
+          initial={{ opacity: 0, x: isLeft ? -30 : 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight"
+        >
+          {title}
+        </motion.h3>
+
+        <motion.div
+          initial={{ opacity: 0, x: isLeft ? -30 : 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="space-y-4"
+        >
+          {points.map((point, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: isLeft ? -20 : 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+              className="flex items-start gap-3"
+            >
+              <div className="w-2 h-2 bg-blue-600 rounded-full mt-3 flex-shrink-0" />
+              <p className="text-lg text-gray-700 leading-relaxed">{point}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+        >
+          <motion.div
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Button
+              className="h-auto rounded-lg bg-primary px-8 py-4 text-base font-medium text-primary-foreground transition-colors hover:bg-primary/90 hover:shadow-[0_8px_16px_rgba(154,255,71,0.3)]"
+            >
+              {cta}
+            </Button>
+          </motion.div>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+};
+
+const SynergyBanner = () => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, delay: 0.5 }}
+      className="relative mt-20 rounded-3xl overflow-hidden shadow-2xl"
+    >
+      <Image
+        src={serviceImages.synergy}
+        alt="FRMI Synergy"
+        width={1200}
+        height={300}
+        className="w-full h-[300px] object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-purple-900/80 to-blue-900/90" />
+      
+      <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between p-8 lg:p-12 text-white">
+        <div className="text-center lg:text-left mb-6 lg:mb-0">
+          <motion.h3
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            className="text-3xl lg:text-4xl font-bold mb-4"
+          >
+            🏠 One Platform. Two Services. Endless Value.
+          </motion.h3>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.9 }}
+            className="text-lg lg:text-xl opacity-90 max-w-2xl"
+          >
+            Why juggle multiple companies when FRMI offers both mortgages and real estate brokerage in one place? Our integrated model means fewer delays, better communication, and a smoother experience.
+          </motion.p>
+        </div>
+        
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 1.1 }}
+          whileHover={{ scale: 1.05, y: -2 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <Button
+            className="h-auto rounded-lg bg-white text-blue-900 px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:bg-white/90"
+          >
+            Experience the FRMI Advantage
+          </Button>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+};
 
 export default function ServicesSection() {
   return (
-    <section className="bg-background py-[120px]">
-      <div className="container flex flex-col items-center gap-[60px]">
-        <h2 className="text-[56px] font-bold tracking-[-1px] leading-tight text-center text-foreground">
-          Houseplus Services
-        </h2>
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service) => (
+    <section className="bg-gradient-to-br from-gray-50 via-white to-blue-50/30 py-[120px] relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-20 left-20 w-32 h-32 bg-blue-500 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-20 w-40 h-40 bg-purple-500 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-emerald-500 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="container mx-auto px-5 md:px-10 lg:px-20 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
+        >
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-5xl md:text-6xl font-bold tracking-[-2px] text-gray-900 mb-6"
+          >
+            Real Estate Services
+          </motion.h2>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+          >
+            Comprehensive real estate solutions designed to meet your every need, from buying and selling to transaction coordination and property valuation.
+          </motion.p>
+        </motion.div>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="space-y-20"
+        >
+          {/* Phase 1: Buyer & Seller Representation */}
+          <div className="space-y-16">
+            <motion.h3
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl font-bold text-center text-gray-800 mb-12"
+            >
+              Phase 1: Representation Services
+            </motion.h3>
+
+            {/* Buyer Representation */}
             <ServiceCard
-              key={service.title}
-              imageSrc={service.imageSrc}
-              title={service.title}
-              description={service.description}
+              imageSrc={serviceImages.buyerRep}
+              title="Find the right home — with the right financing"
+              points={[
+                "We represent buyers at every stage: property search, negotiations, inspections, and closing.",
+                "With FRMI, you get the unique advantage of real estate guidance and mortgage expertise under one roof.",
+                "We simplify the process, saving you time, money, and stress."
+              ]}
+              cta="Find My Dream Home"
+              isLeft={true}
             />
-          ))}
-        </div>
+
+            {/* Seller Representation */}
+            <ServiceCard
+              imageSrc={serviceImages.sellerRep}
+              title="Sell with confidence, backed by market expertise."
+              points={[
+                "We provide professional listing, staging, and marketing strategies to maximize your property's value.",
+                "Our agents combine local market insight with brokerage and lending knowledge to attract the right buyers.",
+                "You get a streamlined sale, from pricing to escrow closing."
+              ]}
+              cta="List My Home Today"
+              isLeft={false}
+            />
+          </div>
+
+          {/* Phase 2: Transaction & Valuation */}
+          <div className="space-y-16">
+            <motion.h3
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl font-bold text-center text-gray-800 mb-12"
+            >
+              Phase 2: Support Services
+            </motion.h3>
+
+            {/* Transaction Coordination */}
+            <ServiceCard
+              imageSrc={serviceImages.transaction}
+              title="Every detail managed — so nothing slips through"
+              points={[
+                "Paperwork, deadlines, escrow, and compliance — we coordinate every step to keep your transaction on track.",
+                "Our team ensures seamless communication between buyers, sellers, lenders, and escrow officers.",
+                "You stay informed while we handle the complexities."
+              ]}
+              cta="Simplify My Transaction"
+              isLeft={true}
+            />
+
+            {/* Property Valuation Support */}
+            <ServiceCard
+              imageSrc={serviceImages.valuation}
+              title="Know your property's true worth"
+              points={[
+                "Whether buying or selling, accurate property valuation is critical.",
+                "We provide comparative market analysis and coordinate professional appraisals.",
+                "With FRMI's insight, you make decisions with confidence and clarity."
+              ]}
+              cta="Get My Home Valued"
+              isLeft={false}
+            />
+          </div>
+
+          {/* Synergy Banner */}
+          <SynergyBanner />
+        </motion.div>
       </div>
     </section>
   );

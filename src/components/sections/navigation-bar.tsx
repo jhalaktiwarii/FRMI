@@ -85,7 +85,7 @@ const NavigationBar = () => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-20 py-5 px-[30px] transition-colors duration-300 ${isScrolled ? 'bg-[rgba(10,10,10,0.7)] backdrop-blur-sm' : 'bg-transparent'}`}
+        className={`fixed top-0 left-0 w-full z-50 py-5 px-[30px] transition-colors duration-300 ${isScrolled ? 'bg-[rgba(10,10,10,0.7)] backdrop-blur-sm' : 'bg-transparent'}`}
       >
         <div className="mx-auto flex justify-between items-center max-w-[1219px] h-[45.59px]">
           <Link href="/" className="flex items-center gap-2" aria-label="First Rate Mortgage Inc. homepage">
@@ -118,7 +118,7 @@ const NavigationBar = () => {
                       <ChevronDown size={14} className="mt-0.5" />
                     </Link>
                     {activeDropdown === item.label && (
-                      <div className="absolute top-full left-0 mt-1 w-56 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50">
+                      <div className="absolute top-full left-0 mt-1 w-56 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-[60]">
                         {item.dropdownItems?.map((dropdownItem) => (
                           <Link
                             key={dropdownItem.label}
@@ -162,7 +162,7 @@ const NavigationBar = () => {
       
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 bg-dark-gray z-50 lg:hidden transition-opacity duration-300 ease-in-out ${
+        className={`fixed inset-0 bg-dark-gray z-[70] lg:hidden transition-opacity duration-300 ease-in-out ${
           isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
         onClick={() => setIsMenuOpen(false)}

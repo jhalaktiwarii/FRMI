@@ -36,17 +36,17 @@ export default function HeroSection() {
 
       <div className="relative z-20 flex h-full flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8">
         <h1 className="font-hero-headline text-[32px] sm:text-[48px] md:text-[64px] lg:text-[80px] xl:text-[96px] font-bold leading-[1.1] tracking-[-1px] sm:tracking-[-1.5px] lg:tracking-[-2px]">
-          Empower Your Real Estate Journey with FRMI
+          Your Trusted Mortgage Partner in California
         </h1>
         <p className="mt-4 sm:mt-6 max-w-[280px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[610px] font-body-text text-sm sm:text-base lg:text-lg leading-[1.5] sm:leading-[1.6]">
-          Mortgages, Brokerage, and More. Experience seamless real estate transactions with our integrated mortgage lending and real estate services under one trusted platform.
+          Licensed mortgage lending, real estate brokerage, and legal case funding. Get pre-approved for your home loan with California's most trusted financial services provider.
         </p>
 
         <Link
           href="/apply"
           className="mt-6 sm:mt-8 lg:mt-10 inline-block rounded-lg bg-primary px-6 sm:px-8 py-3 sm:py-4 font-button-text text-sm sm:text-base font-medium text-dark-gray transition hover:opacity-90 hover:shadow-[0_8px_16px_rgba(154,255,71,0.3)]"
         >
-          Get Pre-Approved / Apply Now
+          Get Pre-Approved for Your Mortgage
         </Link>
       </div>
 
@@ -55,11 +55,11 @@ export default function HeroSection() {
           <InfoItem href="tel:+(555) 123-4567">
             +(555) 123-4567
           </InfoItem>
-          <InfoItem href="mailto:hello@Houseplus.com">
-            hello@Houseplus.com
+          <InfoItem href="mailto:hello@frmi.com">
+            hello@frmi.com
           </InfoItem>
-          <InfoItem href="https://www.google.com/search?q=3517+W.+Gray+St.+Utica,+Pennsylvania+57867" isLast>
-            3517 W. Gray St. Utica, Pennsylvania 57867
+          <InfoItem href="https://www.google.com/search?q=California+Mortgage+Lender+FRMI" isLast>
+            Licensed California Mortgage Lender & Real Estate Broker
           </InfoItem>
         </div>
       </div>
