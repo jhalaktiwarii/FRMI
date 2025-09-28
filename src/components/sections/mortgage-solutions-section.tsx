@@ -62,7 +62,7 @@ const MortgageSolutionsSection = () => {
           {mortgageSolutions.map((solution) => (
             <div
               key={solution.id}
-              className="rounded-xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow duration-300"
+              className="rounded-xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col"
               style={{ backgroundColor: '#F9F7F2' }}
             >
               {/* Icon */}
@@ -82,27 +82,31 @@ const MortgageSolutionsSection = () => {
               </div>
 
               {/* Description */}
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                {solution.description}
-              </p>
+              <div className="mb-6 min-h-[80px]">
+                <p className="text-gray-600 leading-relaxed">
+                  {solution.description}
+                </p>
+              </div>
 
               {/* Features */}
               <ul className="space-y-2 mb-8">
                 {solution.features.map((feature, index) => (
                   <li key={index} className="flex items-center text-sm text-gray-700">
-                    <div className="w-2 h-2 rounded-full mr-3 flex-shrink-0"></div>
+                    <div className="w-2 h-2 rounded-full mr-3 flex-shrink-0 bg-primary"></div>
                     {feature}
                   </li>
                 ))}
               </ul>
 
               {/* CTA Button */}
-              <Link
-                href={solution.href}
-                className="inline-block w-full text-center bg-primary text-dark-gray px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-opacity-90 transition-all hover:shadow-md"
-              >
-                {solution.cta}
-              </Link>
+              <div className="mt-auto">
+                <Link
+                  href={solution.href}
+                  className="group inline-block w-full text-center bg-primary text-dark-gray px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-300 ease-in-out hover:bg-opacity-90 hover:shadow-lg hover:shadow-primary/25 hover:scale-[1.02] active:scale-[0.98] active:bg-opacity-80 border border-transparent hover:border-primary/20"
+                >
+                  <span className="relative z-10">{solution.cta}</span>
+                </Link>
+              </div>
             </div>
           ))}
         </div>
@@ -114,9 +118,9 @@ const MortgageSolutionsSection = () => {
           </p>
           <Link
             href="/contact"
-            className="inline-block bg-gray-900 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors"
+            className="group inline-block bg-gray-900 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 ease-in-out hover:bg-gray-800 hover:shadow-xl hover:shadow-gray-900/25 hover:scale-[1.02] active:scale-[0.98] active:bg-gray-700 border border-transparent hover:border-gray-700/20"
           >
-            Speak with a Mortgage Expert
+            <span className="relative z-10">Speak with a Mortgage Expert</span>
           </Link>
         </div>
       </div>

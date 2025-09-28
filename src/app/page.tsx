@@ -35,9 +35,10 @@ export default function HomePage() {
         <ProcessSection />
         <ServicesSection />
         <FaqSection />
-        <TestimonialsSection />
-        <CtaSection />
+        {/* <TestimonialsSection /> */}
         <ContactUsSection />
+        <CtaSection />
+      
       </main>
       <FooterSection />
     </>
