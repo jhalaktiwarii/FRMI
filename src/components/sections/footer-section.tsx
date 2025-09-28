@@ -3,21 +3,31 @@ import Link from 'next/link';
 
 const NavItems = [
   { name: 'About Us', href: '/about' },
-  { name: 'Mortgage Solutions', href: '/mortgage' },
-  { name: 'Real Estate Services', href: '/real-estate' },
+  { name: 'Compliance', href: '/compliance' },
   { name: 'Resources', href: '/resources' },
-  { name: 'For Partners', href: '/partners' },
-  { name: 'Legal Case Funding', href: '/legal-funding' },
   { name: 'Contact Us', href: '/contact' },
 ];
 
 const ServiceLinks = [
-  { name: 'Residential Loans', href: '/residential-loans' },
-  { name: 'Commercial Loans', href: '/commercial-loans' },
-  { name: 'Refinancing', href: '/refinancing' },
-  { name: 'Buyers', href: '/buyers' },
-  { name: 'Sellers', href: '/sellers' },
-  { name: 'Property Valuation', href: '/property-valuation' },
+  { name: 'Mortgage Solutions', href: '/mortgage/residential' },
+  { name: 'Commercial Loans', href: '/mortgage/commercial' },
+  { name: 'Refinancing', href: '/mortgage/refinancing' },
+  { name: 'Real Estate Services', href: '/real-estate/buyers' },
+  { name: 'Property Valuation', href: '/real-estate/valuation' },
+  { name: 'Transaction Support', href: '/real-estate/transaction' },
+];
+
+const FundingLinks = [
+  { name: 'Annuities', href: '/funding/annuities' },
+  { name: 'Lottery Winnings', href: '/funding/lottery' },
+  { name: 'Pre-Settlement Funding', href: '/funding/pre-settlement' },
+  { name: 'Structured Settlements', href: '/funding/structured-settlements' },
+];
+
+const PartnerLinks = [
+  { name: 'Real Estate Agents', href: '/partners/agents' },
+  { name: 'Attorneys', href: '/partners/attorneys' },
+  { name: 'Developers', href: '/partners/developers' },
 ];
 
 const Logo = () => (
@@ -48,9 +58,9 @@ const FooterSection = () => {
 
         <div className="container relative z-10 mx-auto py-12 sm:py-16 md:py-20 lg:py-[120px] px-4 sm:px-6 lg:px-8">
           {/* Main Footer Content */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-8 lg:gap-12 mb-8">
             {/* Company Info */}
-            <div className="lg:col-span-1">
+            <div className="lg:col-span-1 xl:col-span-2">
               <Logo />
               <p className="mt-4 text-sm text-white/80 leading-relaxed">
                 Providing innovative financial solutions that empower individuals and businesses during critical moments of need.
@@ -66,7 +76,7 @@ const FooterSection = () => {
             <div>
               <h3 className="text-white font-semibold text-lg mb-4">Company</h3>
               <ul className="space-y-3">
-                {NavItems.slice(0, 4).map((item) => (
+                {NavItems.map((item) => (
                   <li key={item.name}>
                     <Link
                       href={item.href}
@@ -96,13 +106,52 @@ const FooterSection = () => {
               </ul>
             </div>
 
-            {/* Additional Links */}
+            {/* Funding Services */}
+            <div>
+              <h3 className="text-white font-semibold text-lg mb-4">Funding Services</h3>
+              <ul className="space-y-3">
+                {FundingLinks.map((item) => (
+                  <li key={item.name}>
+                    <Link
+                      href={item.href}
+                      className="text-sm text-white/70 hover:text-white transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Partners */}
+            <div>
+              <h3 className="text-white font-semibold text-lg mb-4">For Partners</h3>
+              <ul className="space-y-3">
+                {PartnerLinks.map((item) => (
+                  <li key={item.name}>
+                    <Link
+                      href={item.href}
+                      className="text-sm text-white/70 hover:text-white transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Resources */}
             <div>
               <h3 className="text-white font-semibold text-lg mb-4">Resources</h3>
               <ul className="space-y-3">
                 <li>
-                  <Link href="/faqs" className="text-sm text-white/70 hover:text-white transition-colors">
-                    FAQs
+                  <Link href="/resources" className="text-sm text-white/70 hover:text-white transition-colors">
+                    FAQs & Resources
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/compliance" className="text-sm text-white/70 hover:text-white transition-colors">
+                    Compliance
                   </Link>
                 </li>
                 <li>
