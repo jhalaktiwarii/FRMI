@@ -14,14 +14,14 @@ export default function SellersPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
-                  Maximize Your Property Value With Expert Representation
+                  Expert Real Estate Services for California Sellers
                 </h1>
                 <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                  FRMI represents sellers with market insight, pricing strategy, and full brokerage support to maximize your property's value.
+                  FRMI provides comprehensive seller representation with market analysis, pricing strategy, and professional brokerage services to maximize your property's value.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button className="bg-primary text-dark-gray px-8 py-4 rounded-lg font-semibold hover:bg-opacity-90 transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]">
-                    List My Home Today
+                    Get Property Valuation
                   </button>
                 </div>
               </div>
@@ -165,13 +165,13 @@ export default function SellersPage() {
                 </div>
               </div>
               <div className="bg-white p-8 rounded-xl shadow-sm">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">Ready to List Your Home?</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">Ready to Sell Your Home?</h3>
                 <p className="text-gray-600 mb-6">
                   Get a free market analysis and learn how much your home is worth.
                 </p>
                 <button className="w-full bg-primary text-dark-gray px-4 sm:px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 text-sm sm:text-base">
-                  <span className="block sm:hidden">List Home</span>
-                  <span className="hidden sm:block">List My Home Today</span>
+                  <span className="block sm:hidden">Get Valuation</span>
+                  <span className="hidden sm:block">Get Property Valuation</span>
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
               </div>
@@ -181,9 +181,9 @@ export default function SellersPage() {
 
         <CtaSection 
           title="Ready to Maximize Your Home's Value?"
-          description="Sell your home for top dollar with our professional real estate and marketing expertise"
-          primaryButtonText="List My Home Today"
-          secondaryButtonText="Get Home Valuation" variant="small"
+          description="Get expert real estate services and market analysis to sell your home for top dollar"
+          primaryButtonText="Get Property Valuation"
+          secondaryButtonText="Contact Our Team" variant="small"
         />
       </main>
       <FooterSection />

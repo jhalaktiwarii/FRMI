@@ -241,8 +241,8 @@ export default function ResidentialLoansPage() {
         </section>
 
         <CtaSection 
-          title="Ready to Find Your Dream Home?"
-          description="Get pre-approved today and start your home buying journey with confidence"
+          title="Ready to Get Pre-Approved?"
+          description="Start your home buying journey with our expert mortgage lending services"
           primaryButtonText="Start My Home Loan Application"
           secondaryButtonText="Contact a Loan Officer" variant="small"
         />

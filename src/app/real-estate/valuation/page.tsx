@@ -182,7 +182,7 @@ export default function ValuationPage() {
         <CtaSection 
           title="Ready to Know Your Property's True Worth?"
           description="Get an accurate property valuation to make informed buying or selling decisions"
-          primaryButtonText="Get My Home Valued"
+          primaryButtonText="Get Property Valuation"
           secondaryButtonText="Schedule Consultation" variant="small"
         />
       </main>

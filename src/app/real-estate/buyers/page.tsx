@@ -14,14 +14,14 @@ export default function BuyersPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
-                  Helping California Buyers Find — and Finance — Their Homes
+                  Expert Real Estate Services for California Buyers
                 </h1>
                 <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                  FRMI guides buyers from property search to closing, offering the advantage of real estate expertise + mortgage lending under one roof.
+                  FRMI provides comprehensive buyer representation and mortgage lending services, offering the advantage of real estate expertise + financing under one roof.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button className="bg-primary text-dark-gray px-8 py-4 rounded-lg font-semibold hover:bg-opacity-90 transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]">
-                    Find My Dream Home
+                    Get Pre-Approved Today
                   </button>
                 </div>
               </div>
@@ -170,8 +170,8 @@ export default function BuyersPage() {
                   Get pre-approved and start your home buying journey with confidence.
                 </p>
                 <button className="w-full bg-primary text-dark-gray px-4 sm:px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 text-sm sm:text-base">
-                  <span className="block sm:hidden">Find Home</span>
-                  <span className="hidden sm:block">Find My Dream Home</span>
+                  <span className="block sm:hidden">Get Pre-Approved</span>
+                  <span className="hidden sm:block">Get Pre-Approved Today</span>
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
               </div>
@@ -180,10 +180,10 @@ export default function BuyersPage() {
         </section>
 
         <CtaSection 
-          title="Ready to Find Your Dream Home?"
-          description="Start your home buying journey with our integrated real estate and mortgage services"
-          primaryButtonText="Find My Dream Home"
-          secondaryButtonText="Get Pre-Approved" variant="small"
+          title="Ready to Start Your Home Buying Journey?"
+          description="Get pre-approved and connect with our expert real estate and mortgage team"
+          primaryButtonText="Get Pre-Approved Today"
+          secondaryButtonText="Contact Our Team" variant="small"
         />
       </main>
       <FooterSection />
