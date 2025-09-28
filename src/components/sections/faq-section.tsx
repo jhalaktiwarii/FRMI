@@ -34,10 +34,6 @@ const FaqSection = () => {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: {
-        duration: 0.5,
-        ease: [0.25, 0.46, 0.45, 0.94],
-      },
     },
   };
 
@@ -46,10 +42,6 @@ const FaqSection = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.6,
-        ease: [0.25, 0.46, 0.45, 0.94],
-      },
     },
   };
 
@@ -109,13 +101,14 @@ const FaqSection = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <motion.h2 
             className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 bg-clip-text text-transparent mb-6"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
             Frequently Asked Questions
           </motion.h2>
@@ -124,7 +117,7 @@ const FaqSection = () => {
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           >
             Get answers to common questions about mortgages, real estate, and our integrated services.
           </motion.p>
@@ -141,6 +134,7 @@ const FaqSection = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
+                transition={{ duration: 0.5, ease: "easeOut" }}
               >
                 <AccordionItem 
                   value={`item-${index}`}
@@ -158,7 +152,7 @@ const FaqSection = () => {
                         scale: 1,
                         transition: {
                           duration: 0.4,
-                          ease: [0.25, 0.46, 0.45, 0.94],
+                          ease: "easeOut",
                           delay: 0.1
                         }
                       }}
@@ -168,7 +162,7 @@ const FaqSection = () => {
                         scale: 0.95,
                         transition: {
                           duration: 0.3,
-                          ease: [0.25, 0.46, 0.45, 0.94]
+                          ease: "easeOut"
                         }
                       }}
                       className="origin-top"
@@ -187,7 +181,7 @@ const FaqSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
         >
           <p className="text-gray-600 mb-8 text-lg">
             Still have questions? We're here to help!

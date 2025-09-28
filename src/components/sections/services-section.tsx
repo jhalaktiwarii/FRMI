@@ -34,10 +34,6 @@ const sectionVariants = {
     opacity: 1, 
     y: 0,
     scale: 1,
-    transition: {
-      duration: 0.8,
-      ease: [0.25, 0.46, 0.45, 0.94],
-    },
   },
 };
 
@@ -57,6 +53,7 @@ const ServiceCard = ({
   return (
     <motion.div
       variants={sectionVariants}
+      transition={{ duration: 0.8, ease: "easeOut" }}
       className={`flex flex-col lg:flex-row items-center gap-8 ${isLeft ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}
     >
       {/* Image Section */}
