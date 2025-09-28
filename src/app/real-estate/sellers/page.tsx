@@ -169,9 +169,10 @@ export default function SellersPage() {
                 <p className="text-gray-600 mb-6">
                   Get a free market analysis and learn how much your home is worth.
                 </p>
-                <button className="w-full bg-primary text-dark-gray px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2">
-                  List My Home Today
-                  <ArrowRight className="w-5 h-5" />
+                <button className="w-full bg-primary text-dark-gray px-4 sm:px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 text-sm sm:text-base">
+                  <span className="block sm:hidden">List Home</span>
+                  <span className="hidden sm:block">List My Home Today</span>
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
               </div>
             </div>
@@ -182,7 +183,7 @@ export default function SellersPage() {
           title="Ready to Maximize Your Home's Value?"
           description="Sell your home for top dollar with our professional real estate and marketing expertise"
           primaryButtonText="List My Home Today"
-          secondaryButtonText="Get Home Valuation"
+          secondaryButtonText="Get Home Valuation" variant="small"
         />
       </main>
       <FooterSection />

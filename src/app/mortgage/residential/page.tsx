@@ -230,9 +230,10 @@ export default function ResidentialLoansPage() {
                 <p className="text-gray-600 mb-6">
                   Take the first step towards homeownership with our easy pre-approval process.
                 </p>
-                <button className="w-full bg-primary text-dark-gray px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2">
-                  Start My Home Loan Application
-                  <ArrowRight className="w-5 h-5" />
+                <button className="w-full bg-primary text-dark-gray px-4 sm:px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 text-sm sm:text-base">
+                  <span className="block sm:hidden">Start Application</span>
+                  <span className="hidden sm:block">Start My Home Loan Application</span>
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
               </div>
             </div>
@@ -243,7 +244,7 @@ export default function ResidentialLoansPage() {
           title="Ready to Find Your Dream Home?"
           description="Get pre-approved today and start your home buying journey with confidence"
           primaryButtonText="Start My Home Loan Application"
-          secondaryButtonText="Contact a Loan Officer"
+          secondaryButtonText="Contact a Loan Officer" variant="small"
         />
       </main>
       <FooterSection />

@@ -129,7 +129,7 @@ export default function RefinancingPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
               <div className="bg-white p-8 rounded-xl shadow-sm">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Good Reasons to Refinance</h3>
                 <div className="space-y-4">
@@ -204,7 +204,7 @@ export default function RefinancingPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
               <div className="text-center">
                 <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
                   <span className="text-2xl font-bold text-dark-gray">1</span>
@@ -241,7 +241,7 @@ export default function RefinancingPage() {
           title="Ready to Refinance Your Mortgage?"
           description="Lower your monthly payments or access your home equity with our refinancing options"
           primaryButtonText="Start Refinancing Application"
-          secondaryButtonText="Get Refinancing Quote"
+          secondaryButtonText="Get Refinancing Quote" variant="small"
         />
       </main>
       <FooterSection />

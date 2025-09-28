@@ -20,8 +20,9 @@ export default function CompliancePage() {
                   FRMI ensures every loan, transaction, and client interaction meets the highest standards of accuracy, integrity, and compliance with California and federal regulations.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <button className="bg-primary text-dark-gray px-8 py-4 rounded-lg font-semibold hover:bg-opacity-90 transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]">
-                    Work With a Trusted California Mortgage Lender & Real Estate Brokerage
+                  <button className="bg-primary text-dark-gray px-6 sm:px-8 py-4 rounded-lg font-semibold hover:bg-opacity-90 transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] text-center">
+                    <span className="block sm:hidden">Work With Trusted Professionals</span>
+                    <span className="hidden sm:block">Work With a Trusted California Mortgage Lender & Real Estate Brokerage</span>
                   </button>
                 </div>
               </div>
@@ -65,23 +66,23 @@ export default function CompliancePage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="text-center p-6 bg-gray-50 rounded-xl">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+              <div className="text-center p-4 sm:p-6 bg-gray-50 rounded-xl">
                 <FileText className="w-12 h-12 text-primary mx-auto mb-4" />
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">California Bureau of Real Estate (CalBRE)</h3>
                 <p className="text-gray-600 text-sm">Full compliance with state real estate regulations</p>
               </div>
-              <div className="text-center p-6 bg-gray-50 rounded-xl">
+              <div className="text-center p-4 sm:p-6 bg-gray-50 rounded-xl">
                 <Scale className="w-12 h-12 text-primary mx-auto mb-4" />
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">California DFPI</h3>
                 <p className="text-gray-600 text-sm">Department of Financial Protection and Innovation compliance</p>
               </div>
-              <div className="text-center p-6 bg-gray-50 rounded-xl">
+              <div className="text-center p-4 sm:p-6 bg-gray-50 rounded-xl">
                 <Shield className="w-12 h-12 text-primary mx-auto mb-4" />
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">NMLS Mortgage Rules</h3>
                 <p className="text-gray-600 text-sm">Nationwide Mortgage Licensing System adherence</p>
               </div>
-              <div className="text-center p-6 bg-gray-50 rounded-xl">
+              <div className="text-center p-4 sm:p-6 bg-gray-50 rounded-xl">
                 <CheckCircle className="w-12 h-12 text-primary mx-auto mb-4" />
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">CFPB & Federal Laws</h3>
                 <p className="text-gray-600 text-sm">Consumer Financial Protection Bureau compliance</p>
@@ -99,7 +100,7 @@ export default function CompliancePage() {
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
               <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
                   <Users className="w-8 h-8 text-blue-600" />
@@ -155,7 +156,7 @@ export default function CompliancePage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               <div className="text-center">
                 <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
                   <span className="text-2xl font-bold text-dark-gray">1</span>
@@ -205,7 +206,7 @@ export default function CompliancePage() {
         <CtaSection 
           title="Trust & Transparency"
           description="At FRMI, compliance is not just policy — it's our promise. Every loan we originate, every property we represent, and every funding we provide undergoes rigorous quality control to protect you."
-          primaryButtonText="Work With a Trusted California Mortgage Lender & Real Estate Brokerage"
+          primaryButtonText="Work With Trusted Professionals" variant="small"
         />
       </main>
       <FooterSection />

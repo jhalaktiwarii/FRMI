@@ -169,9 +169,10 @@ export default function BuyersPage() {
                 <p className="text-gray-600 mb-6">
                   Get pre-approved and start your home buying journey with confidence.
                 </p>
-                <button className="w-full bg-primary text-dark-gray px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2">
-                  Find My Dream Home
-                  <ArrowRight className="w-5 h-5" />
+                <button className="w-full bg-primary text-dark-gray px-4 sm:px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 text-sm sm:text-base">
+                  <span className="block sm:hidden">Find Home</span>
+                  <span className="hidden sm:block">Find My Dream Home</span>
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
               </div>
             </div>
@@ -182,7 +183,7 @@ export default function BuyersPage() {
           title="Ready to Find Your Dream Home?"
           description="Start your home buying journey with our integrated real estate and mortgage services"
           primaryButtonText="Find My Dream Home"
-          secondaryButtonText="Get Pre-Approved"
+          secondaryButtonText="Get Pre-Approved" variant="small"
         />
       </main>
       <FooterSection />

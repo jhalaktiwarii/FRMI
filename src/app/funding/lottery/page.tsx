@@ -140,9 +140,10 @@ export default function LotteryPage() {
                 <p className="text-gray-600 mb-6">
                   Get immediate access to your lottery winnings with our secure process.
                 </p>
-                <button className="w-full bg-primary text-dark-gray px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2">
-                  Cash Out My Lottery Winnings
-                  <ArrowRight className="w-5 h-5" />
+                <button className="w-full bg-primary text-dark-gray px-4 sm:px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 text-sm sm:text-base">
+                  <span className="block sm:hidden">Cash Out Winnings</span>
+                  <span className="hidden sm:block">Cash Out My Lottery Winnings</span>
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
               </div>
             </div>
@@ -153,7 +154,7 @@ export default function LotteryPage() {
           title="Ready to Cash Out Your Lottery Winnings?"
           description="Convert your lottery winnings into immediate cash with our competitive lump-sum offers"
           primaryButtonText="Get Lottery Quote"
-          secondaryButtonText="Contact Lottery Team"
+          secondaryButtonText="Contact Lottery Team" variant="small"
         />
       </main>
       <FooterSection />

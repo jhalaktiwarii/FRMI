@@ -94,9 +94,9 @@ export default function ResourcesPage() {
                 >
                   <button
                     onClick={() => toggleFAQ(index)}
-                    className="w-full px-6 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+                    className="w-full px-4 sm:px-6 py-4 sm:py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
                   >
-                    <span className="text-lg font-semibold text-gray-900 pr-4">
+                    <span className="text-base sm:text-lg font-semibold text-gray-900 pr-4">
                       {faq.question}
                     </span>
                     {openIndex === index ? (
@@ -106,9 +106,9 @@ export default function ResourcesPage() {
                     )}
                   </button>
                   {openIndex === index && (
-                    <div className="px-6 pb-6">
+                    <div className="px-4 sm:px-6 pb-4 sm:pb-6">
                       <div className="border-t border-gray-200 pt-4">
-                        <p className="text-gray-600 leading-relaxed">
+                        <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                           {faq.answer}
                         </p>
                       </div>
@@ -179,7 +179,7 @@ export default function ResourcesPage() {
           title="Still Have Questions?"
           description="Our expert team is here to help you with any questions about mortgages, real estate, or our services"
           primaryButtonText="Contact Us Today"
-          secondaryButtonText="Get Pre-Approved"
+          secondaryButtonText="Get Pre-Approved" variant="small"
         />
       </main>
       <FooterSection />

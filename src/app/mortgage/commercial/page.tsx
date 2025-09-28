@@ -216,9 +216,10 @@ export default function CommercialLoansPage() {
                 <p className="text-gray-600 mb-6">
                   Let our commercial lending team help you secure the financing you need for your next project.
                 </p>
-                <button className="w-full bg-primary text-dark-gray px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2">
-                  Apply for a Commercial Loan
-                  <ArrowRight className="w-5 h-5" />
+                <button className="w-full bg-primary text-dark-gray px-4 sm:px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 text-sm sm:text-base">
+                  <span className="block sm:hidden">Apply for Loan</span>
+                  <span className="hidden sm:block">Apply for a Commercial Loan</span>
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
               </div>
             </div>
@@ -229,7 +230,7 @@ export default function CommercialLoansPage() {
           title="Ready to Finance Your Commercial Property?"
           description="Get the funding you need for your commercial real estate investment"
           primaryButtonText="Start Commercial Loan Application"
-          secondaryButtonText="Contact Commercial Lending Team"
+          secondaryButtonText="Contact Commercial Lending Team" variant="small"
         />
       </main>
       <FooterSection />

@@ -129,7 +129,7 @@ export default function TransactionPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
               <div className="text-center">
                 <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
                   <span className="text-2xl font-bold text-dark-gray">1</span>
@@ -214,9 +214,10 @@ export default function TransactionPage() {
                 <p className="text-gray-600 mb-6">
                   Let our transaction coordination team handle all the details for you.
                 </p>
-                <button className="w-full bg-primary text-dark-gray px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2">
-                  Simplify My Transaction
-                  <ArrowRight className="w-5 h-5" />
+                <button className="w-full bg-primary text-dark-gray px-4 sm:px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 text-sm sm:text-base">
+                  <span className="block sm:hidden">Simplify Transaction</span>
+                  <span className="hidden sm:block">Simplify My Transaction</span>
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
               </div>
             </div>
@@ -227,7 +228,7 @@ export default function TransactionPage() {
           title="Ready to Simplify Your Real Estate Transaction?"
           description="Let us handle all the complex paperwork and coordination for a smooth closing"
           primaryButtonText="Simplify My Transaction"
-          secondaryButtonText="Contact Transaction Team"
+          secondaryButtonText="Contact Transaction Team" variant="small"
         />
       </main>
       <FooterSection />

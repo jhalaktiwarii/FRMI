@@ -121,7 +121,7 @@ export default function DevelopersPage() {
           title="Ready to Fund Your Next Development Project?"
           description="Get the financing you need for your commercial and residential development projects"
           primaryButtonText="Start Development Loan Application"
-          secondaryButtonText="Contact Development Team"
+          secondaryButtonText="Contact Development Team" variant="small"
         />
       </main>
       <FooterSection />

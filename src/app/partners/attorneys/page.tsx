@@ -121,7 +121,7 @@ export default function AttorneysPage() {
           title="Ready to Help Your Clients?"
           description="Provide your clients with access to pre-settlement funding and structured settlement solutions"
           primaryButtonText="Partner With Us"
-          secondaryButtonText="Contact Legal Team"
+          secondaryButtonText="Contact Legal Team" variant="small"
         />
       </main>
       <FooterSection />

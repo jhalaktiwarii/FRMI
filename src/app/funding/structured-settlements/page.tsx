@@ -140,9 +140,10 @@ export default function StructuredSettlementsPage() {
                 <p className="text-gray-600 mb-6">
                   Receive a free, no-obligation quote for your structured settlement.
                 </p>
-                <button className="w-full bg-primary text-dark-gray px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2">
-                  Get My Settlement Cash Offer
-                  <ArrowRight className="w-5 h-5" />
+                <button className="w-full bg-primary text-dark-gray px-4 sm:px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 text-sm sm:text-base">
+                  <span className="block sm:hidden">Get Cash Offer</span>
+                  <span className="hidden sm:block">Get My Settlement Cash Offer</span>
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
               </div>
             </div>
@@ -153,7 +154,7 @@ export default function StructuredSettlementsPage() {
           title="Ready to Unlock Your Settlement Cash?"
           description="Convert your structured settlement payments into immediate cash with competitive rates"
           primaryButtonText="Get Settlement Quote"
-          secondaryButtonText="Contact Settlement Team"
+          secondaryButtonText="Contact Settlement Team" variant="small"
         />
       </main>
       <FooterSection />

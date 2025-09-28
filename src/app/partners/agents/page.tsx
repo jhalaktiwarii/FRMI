@@ -121,7 +121,7 @@ export default function AgentsPage() {
           title="Ready to Partner With FRMI?"
           description="Join our network of trusted real estate professionals and grow your business"
           primaryButtonText="Become a Partner"
-          secondaryButtonText="Learn More About Partnership"
+          secondaryButtonText="Learn More About Partnership" variant="small"
         />
       </main>
       <FooterSection />

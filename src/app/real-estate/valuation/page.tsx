@@ -169,9 +169,10 @@ export default function ValuationPage() {
                 <p className="text-gray-600 mb-6">
                   Professional valuation services to help you make informed real estate decisions.
                 </p>
-                <button className="w-full bg-primary text-dark-gray px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2">
-                  Get My Property Valued
-                  <ArrowRight className="w-5 h-5" />
+                <button className="w-full bg-primary text-dark-gray px-4 sm:px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 text-sm sm:text-base">
+                  <span className="block sm:hidden">Get Valuation</span>
+                  <span className="hidden sm:block">Get My Property Valued</span>
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
               </div>
             </div>
@@ -182,7 +183,7 @@ export default function ValuationPage() {
           title="Ready to Know Your Property's True Worth?"
           description="Get an accurate property valuation to make informed buying or selling decisions"
           primaryButtonText="Get My Home Valued"
-          secondaryButtonText="Schedule Consultation"
+          secondaryButtonText="Schedule Consultation" variant="small"
         />
       </main>
       <FooterSection />
