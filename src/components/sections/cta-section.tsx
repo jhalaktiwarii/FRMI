@@ -15,23 +15,13 @@ const CtaSection = () => {
         />
       </div>
       
-      <div className="relative z-10 container mx-auto px-5 sm:px-20 py-20 md:py-[120px] flex flex-col items-center text-center">
-        <h2 className="text-4xl md:text-[56px] font-bold text-dark-gray tracking-[-0.5px] md:tracking-[-1px] leading-[1.2] max-w-[680px]">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 lg:px-5 xl:px-20 py-16 sm:py-20 md:py-24 lg:py-[120px] flex flex-col items-center text-center">
+        <h2 className="text-[28px] sm:text-[36px] md:text-[48px] lg:text-4xl xl:text-[56px] font-bold text-dark-gray tracking-[-0.5px] md:tracking-[-0.8px] lg:tracking-[-1px] leading-[1.2] max-w-[280px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[600px] xl:max-w-[680px]">
           Ready to find your home?
         </h2>
-        <p className="mt-5 text-base md:text-lg text-dark-gray leading-[1.5] md:leading-[1.6] max-w-[680px]">
+        <p className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg text-dark-gray leading-[1.4] sm:leading-[1.5] md:leading-[1.6] max-w-[280px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[600px] xl:max-w-[680px]">
           Guiding principles that shape our approach to luxury real estate, ensuring unparalleled service and exceptional experiences.
         </p>
-        <div className="mt-10">
-          <a
-            href="https://finestdevs.com/buy-houseplus"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-white text-dark-gray font-medium text-base py-4 px-8 rounded-lg transition-transform duration-100 ease-in-out hover:scale-105"
-          >
-            Get This Template
-          </a>
-        </div>
       </div>
     </section>
   );

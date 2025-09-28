@@ -1,67 +1,34 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Pencil, KeyRound, Blocks } from 'lucide-react';
 
 const NavItems = [
-  { name: 'Home', href: '/' },
-  { name: 'Properties', href: '#' },
-  { name: 'About', href: '#' },
-  { name: 'Testimonials', href: '#' },
+  { name: 'About Us', href: '/about' },
+  { name: 'Mortgage Solutions', href: '/mortgage' },
+  { name: 'Real Estate Services', href: '/real-estate' },
+  { name: 'Resources', href: '/resources' },
+  { name: 'For Partners', href: '/partners' },
+  { name: 'Legal Case Funding', href: '/legal-funding' },
+  { name: 'Contact Us', href: '/contact' },
+];
+
+const ServiceLinks = [
+  { name: 'Residential Loans', href: '/residential-loans' },
+  { name: 'Commercial Loans', href: '/commercial-loans' },
+  { name: 'Refinancing', href: '/refinancing' },
+  { name: 'Buyers', href: '/buyers' },
+  { name: 'Sellers', href: '/sellers' },
+  { name: 'Property Valuation', href: '/property-valuation' },
 ];
 
 const Logo = () => (
-  <Link href="/" className="flex items-center gap-3">
-    <div className="bg-white text-dark-gray w-8 h-8 rounded-md flex items-center justify-center">
-      <span className="font-bold text-xl leading-none">N</span>
+  <Link href="/" className="flex items-center gap-2 sm:gap-3">
+    <div className="bg-white text-dark-gray w-6 h-6 sm:w-8 sm:h-8 rounded-md flex items-center justify-center">
+      <span className="font-bold text-lg sm:text-xl leading-none">F</span>
     </div>
-    <span className="text-white text-2xl font-semibold">Houseplus</span>
+    <span className="text-white text-xl sm:text-2xl font-semibold">FRMI</span>
   </Link>
 );
 
-const FloatingButtons = () => (
-  <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
-    <a
-      href="https://finestdevs.com/buy-houseplus"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex items-center gap-2.5 bg-white text-dark-gray px-4 py-2.5 rounded-lg shadow-[0_4px_12px_rgba(0,0,0,0.12)] text-sm font-medium hover:bg-neutral-100 transition-colors"
-    >
-      <Pencil className="w-4 h-4" />
-      <span>Get This Template</span>
-    </a>
-    <a
-      href="https://framerbite.com/all-access"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex items-center gap-2.5 bg-[#16A085] text-white px-4 py-2.5 rounded-lg shadow-[0_4px_12px_rgba(0,0,0,0.12)] text-sm font-medium hover:bg-opacity-90 transition-opacity"
-    >
-      <KeyRound className="w-4 h-4" />
-      <span>Unlock 190+ Templates</span>
-    </a>
-    <a
-      href="https://grayblocks.net/"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex items-center gap-2.5 bg-dark-gray text-white px-4 py-2.5 rounded-lg shadow-[0_4px_12px_rgba(0,0,0,0.12)] text-sm font-medium border border-white/20 hover:bg-neutral-700 transition-colors"
-    >
-      <Blocks className="w-4 h-4" />
-      <span>Access 4200+ Components</span>
-    </a>
-    <a
-      href="https://www.framer.com/"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="mt-2 w-[168px] h-[36px] flex items-center justify-center"
-    >
-      <Image
-        src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/fb03db6c-5ef0-4c5d-a106-339f02e1dcca-housepluss-framer-website/assets/icons/Obi3JOZXtPCv2r93v1AsVEUz0M-1.png"
-        alt="Made in Framer"
-        width={126}
-        height={27}
-      />
-    </a>
-  </div>
-);
 
 const FooterSection = () => {
   return (
@@ -79,36 +46,117 @@ const FooterSection = () => {
           <div className="absolute inset-0 bg-dark-gray/60"></div>
         </div>
 
-        <div className="container relative z-10 mx-auto flex flex-col justify-between min-h-[660px] py-[120px]">
-          <div>
-            <div className="flex flex-col md:flex-row justify-between items-center border-b border-white/10 pb-5">
+        <div className="container relative z-10 mx-auto py-12 sm:py-16 md:py-20 lg:py-[120px] px-4 sm:px-6 lg:px-8">
+          {/* Main Footer Content */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-8">
+            {/* Company Info */}
+            <div className="lg:col-span-1">
               <Logo />
-              <nav className="mt-6 md:mt-0">
-                <ul className="flex items-center gap-8">
-                  {NavItems.map((item, index) => (
-                    <li key={item.name} className="flex items-center gap-2">
-                       <span className="text-white/50">•</span>
-                      <Link
-                        href={item.href}
-                        className="text-base font-medium text-white hover:text-primary-green transition-colors"
-                      >
-                        {item.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
+              <p className="mt-4 text-sm text-white/80 leading-relaxed">
+                Providing innovative financial solutions that empower individuals and businesses during critical moments of need.
+              </p>
+              <div className="mt-6 space-y-2">
+                <p className="text-sm text-white/70">Phone: (555) 123-4567</p>
+                <p className="text-sm text-white/70">Email: info@frmi.com</p>
+                <p className="text-sm text-white/70">Address: California, USA</p>
+              </div>
+            </div>
+
+            {/* Main Navigation */}
+            <div>
+              <h3 className="text-white font-semibold text-lg mb-4">Company</h3>
+              <ul className="space-y-3">
+                {NavItems.slice(0, 4).map((item) => (
+                  <li key={item.name}>
+                    <Link
+                      href={item.href}
+                      className="text-sm text-white/70 hover:text-white transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Services */}
+            <div>
+              <h3 className="text-white font-semibold text-lg mb-4">Services</h3>
+              <ul className="space-y-3">
+                {ServiceLinks.map((item) => (
+                  <li key={item.name}>
+                    <Link
+                      href={item.href}
+                      className="text-sm text-white/70 hover:text-white transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Additional Links */}
+            <div>
+              <h3 className="text-white font-semibold text-lg mb-4">Resources</h3>
+              <ul className="space-y-3">
+                <li>
+                  <Link href="/faqs" className="text-sm text-white/70 hover:text-white transition-colors">
+                    FAQs
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/legal-disclaimer" className="text-sm text-white/70 hover:text-white transition-colors">
+                    Legal Disclaimer
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/privacy-policy" className="text-sm text-white/70 hover:text-white transition-colors">
+                    Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/terms-of-service" className="text-sm text-white/70 hover:text-white transition-colors">
+                    Terms of Service
+                  </Link>
+                </li>
+              </ul>
             </div>
           </div>
 
-          <div className="mt-auto pt-10 text-center md:text-left">
-            <p className="text-base text-white/70">
-              © 2024 Design and Developed by Framerbite
+          {/* Credentials/Badges */}
+          <div className="border-t border-white/10 pt-8 mb-8">
+            <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-8">
+              <div className="text-center">
+                <div className="text-xs text-white/60 mb-1">Licensed</div>
+                <div className="text-sm text-white font-medium">CA Real Estate Broker</div>
+              </div>
+              <div className="text-center">
+                <div className="text-xs text-white/60 mb-1">Registered</div>
+                <div className="text-sm text-white font-medium">NMLS Lender</div>
+              </div>
+              <div className="text-center">
+                <div className="text-xs text-white/60 mb-1">Protected</div>
+                <div className="text-sm text-white font-medium">$250K Surety Bond</div>
+              </div>
+              <div className="text-center">
+                <div className="text-xs text-white/60 mb-1">Experience</div>
+                <div className="text-sm text-white font-medium">20+ Years Combined</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Footer */}
+          <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center">
+            <p className="text-sm text-white/70 text-center md:text-left">
+              © 2024 FRMI. All rights reserved. | NMLS ID: [Your NMLS ID] | DRE License: [Your DRE License]
+            </p>
+            <p className="text-sm text-white/70 mt-2 md:mt-0">
+              Made with ❤️ by <a href="https://www.sugmaya.com" target="_blank" rel="noopener noreferrer" className="text-primary-green hover:text-primary-green/80 transition-colors">Sugmaya Governance</a>
             </p>
           </div>
         </div>
       </footer>
-      <FloatingButtons />
     </>
   );
 };

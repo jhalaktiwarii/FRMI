@@ -16,18 +16,19 @@ export default function HomePage() {
       <NavigationBar />
       <main>
         <HeroSection />
-        <RecentListings />
-        <div className="bg-background py-[120px]">
+        {/* <RecentListings /> */}
+        {/* <div className="bg-background py-[120px]">
           <div className="container mx-auto px-5 md:px-10 lg:px-20">
             <div className="flex flex-col gap-[120px]">
               <AboutSection />
               <CeoVideoSection />
             </div>
           </div>
-        </div>
+        </div> */}
+           <WhyChooseSection />
         <ProcessSection />
-        <ServicesSection />
-        <WhyChooseSection />
+        {/* <ServicesSection /> */}
+     
         <TestimonialsSection />
         <CtaSection />
       </main>
