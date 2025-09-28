@@ -9,6 +9,16 @@ export const metadata: Metadata = {
   description: "Empower your real estate journey with FRMI. We provide innovative mortgage solutions, real estate brokerage services, and legal case funding. Get pre-approved for your home loan today with our integrated mortgage and real estate expertise.",
   keywords: "mortgage loans, real estate, California, home loans, refinancing, FHA loans, VA loans, commercial loans, property valuation, real estate brokerage, legal case funding",
   authors: [{ name: "FRMI" }],
+  icons: {
+    icon: [
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" }
+    ],
+    apple: [
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" }
+    ]
+  },
   openGraph: {
     title: "FRMI - Mortgage Solutions & Real Estate Services",
     description: "Empower your real estate journey with FRMI. Integrated mortgage and real estate services under one roof.",
