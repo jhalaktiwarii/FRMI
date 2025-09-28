@@ -13,7 +13,15 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { label: "About", href: "/about" },
+  { 
+    label: "About", 
+    href: "#", 
+    hasDropdown: true,
+    dropdownItems: [
+      { label: "About Us", href: "/about" },
+      { label: "Compliance & QC", href: "/compliance" }
+    ]
+  },
   { 
     label: "Mortgage", 
     href: "#", 
@@ -57,13 +65,13 @@ const navItems: NavItem[] = [
       { label: "Lottery Winnings", href: "/funding/lottery" }
     ]
   },
-  { label: "Contact", href: "/contact" },
 ];
 
 const NavigationBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -74,12 +82,30 @@ const NavigationBar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (hoverTimeout) {
+        clearTimeout(hoverTimeout);
+      }
+    };
+  }, [hoverTimeout]);
+
   const handleDropdownEnter = (label: string) => {
+    // Clear any existing timeout
+    if (hoverTimeout) {
+      clearTimeout(hoverTimeout);
+      setHoverTimeout(null);
+    }
     setActiveDropdown(label);
   };
 
   const handleDropdownLeave = () => {
-    setActiveDropdown(null);
+    // Add a small delay before hiding the dropdown
+    const timeout = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 150); // 150ms delay
+    setHoverTimeout(timeout);
   };
 
   return (
@@ -118,7 +144,7 @@ const NavigationBar = () => {
                       <ChevronDown size={14} className="mt-0.5" />
                     </Link>
                     {activeDropdown === item.label && (
-                      <div className="absolute top-full left-0 mt-1 w-56 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-[60]">
+                      <div className="absolute top-full left-0 w-56 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-[60] before:absolute before:-top-1 before:left-0 before:right-0 before:h-1 before:bg-transparent">
                         {item.dropdownItems?.map((dropdownItem) => (
                           <Link
                             key={dropdownItem.label}

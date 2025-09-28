@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import CtaBannerSection from "./cta-banner-section";
 
 // High-quality 4K images for real estate services
 const serviceImages = {
@@ -130,64 +131,7 @@ const ServiceCard = ({
   );
 };
 
-const SynergyBanner = () => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8, delay: 0.5 }}
-      className="relative mt-20 rounded-3xl overflow-hidden shadow-2xl"
-    >
-      <Image
-        src={serviceImages.synergy}
-        alt="FRMI Synergy"
-        width={1200}
-        height={300}
-        className="w-full h-[300px] object-cover"
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-purple-900/80 to-blue-900/90" />
-      
-      <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between p-8 lg:p-12 text-white">
-        <div className="text-center lg:text-left mb-6 lg:mb-0">
-          <motion.h3
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-            className="text-3xl lg:text-4xl font-bold mb-4"
-          >
-            🏠 One Platform. Two Services. Endless Value.
-          </motion.h3>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.9 }}
-            className="text-lg lg:text-xl opacity-90 max-w-2xl"
-          >
-            Why juggle multiple companies when FRMI offers both mortgages and real estate brokerage in one place? Our integrated model means fewer delays, better communication, and a smoother experience.
-          </motion.p>
-        </div>
-        
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 1.1 }}
-          whileHover={{ scale: 1.05, y: -2 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <Button
-            className="h-auto rounded-lg bg-white text-blue-900 px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:bg-white/90"
-          >
-            Experience the FRMI Advantage
-          </Button>
-        </motion.div>
-      </div>
-    </motion.div>
-  );
-};
+
 
 export default function ServicesSection() {
   return (
@@ -235,17 +179,8 @@ export default function ServicesSection() {
           viewport={{ once: true }}
           className="space-y-20"
         >
-          {/* Phase 1: Buyer & Seller Representation */}
+          {/* Buyer & Seller Representation */}
           <div className="space-y-16">
-            <motion.h3
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-3xl font-bold text-center text-gray-800 mb-12"
-            >
-              Phase 1: Representation Services
-            </motion.h3>
 
             {/* Buyer Representation */}
             <ServiceCard
@@ -274,17 +209,8 @@ export default function ServicesSection() {
             />
           </div>
 
-          {/* Phase 2: Transaction & Valuation */}
+          {/* Transaction & Valuation */}
           <div className="space-y-16">
-            <motion.h3
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-3xl font-bold text-center text-gray-800 mb-12"
-            >
-              Phase 2: Support Services
-            </motion.h3>
 
             {/* Transaction Coordination */}
             <ServiceCard
@@ -312,11 +238,13 @@ export default function ServicesSection() {
               isLeft={false}
             />
           </div>
-
-          {/* Synergy Banner */}
-          <SynergyBanner />
         </motion.div>
       </div>
+
+      {/* Full width CTA Banner */}
+     <div className="mt-32">
+     <CtaBannerSection />
+     </div>
     </section>
   );
 }

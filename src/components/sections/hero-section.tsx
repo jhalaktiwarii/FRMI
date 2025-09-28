@@ -2,18 +2,24 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-const InfoItem = ({ children, href, isLast = false }: { children: React.ReactNode; href: string; isLast?: boolean }) => {
-  const isExternal = href.startsWith('http');
+const InfoItem = ({ children, href, isLast = false }: { children: React.ReactNode; href?: string; isLast?: boolean }) => {
+  const isExternal = href?.startsWith('http');
   return (
     <div className={`px-4 sm:px-6 md:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 ${!isLast ? 'border-r border-white/10' : ''}`}>
-      <a
-        href={href}
-        target={isExternal ? '_blank' : undefined}
-        rel={isExternal ? 'noopener noreferrer' : undefined}
-        className="font-navigation text-xs sm:text-sm md:text-base font-medium text-white transition-colors hover:text-primary"
-      >
-        {children}
-      </a>
+      {href ? (
+        <a
+          href={href}
+          target={isExternal ? '_blank' : undefined}
+          rel={isExternal ? 'noopener noreferrer' : undefined}
+          className="font-navigation text-xs sm:text-sm md:text-base font-medium text-white transition-colors hover:text-primary"
+        >
+          {children}
+        </a>
+      ) : (
+        <span className="font-navigation text-xs sm:text-sm md:text-base font-medium text-white">
+          {children}
+        </span>
+      )}
     </div>
   );
 };
@@ -58,7 +64,7 @@ export default function HeroSection() {
           <InfoItem href="mailto:hello@frmi.com">
             hello@frmi.com
           </InfoItem>
-          <InfoItem href="https://www.google.com/search?q=California+Mortgage+Lender+FRMI" isLast>
+          <InfoItem isLast>
             Licensed California Mortgage Lender & Real Estate Broker
           </InfoItem>
         </div>
