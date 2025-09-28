@@ -2,7 +2,7 @@
 
 import React, { useCallback, FC } from 'react';
 import Image from 'next/image';
-import useEmblaCarousel, { EmblaCarouselType } from 'embla-carousel-react';
+import useEmblaCarousel from 'embla-carousel-react';
 
 type Testimonial = {
   quote: string;
