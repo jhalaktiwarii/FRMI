@@ -1,11 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { motion } from "framer-motion";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const ContactUsSection = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +19,61 @@ const ContactUsSection = () => {
     message: ""
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const sectionRef = useRef<HTMLElement>(null);
+  const formRef = useRef<HTMLDivElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animate background
+    if (bgRef.current) {
+      gsap.fromTo(bgRef.current,
+        { scale: 1.1, opacity: 0.8 },
+        { 
+          scale: 1, 
+          opacity: 1, 
+          duration: 1.2, 
+          ease: 'power2.out' 
+        }
+      );
+    }
+
+    // Animate form
+    if (formRef.current) {
+      gsap.fromTo(formRef.current,
+        { 
+          opacity: 0,
+          y: 100,
+          scale: 0.95,
+          rotationX: 15,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          rotationX: 0,
+          duration: 1.0,
+          ease: 'back.out(1.7)',
+          scrollTrigger: {
+            trigger: formRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+          },
+        }
+      );
+    }
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({
       ...prev,
@@ -23,16 +81,36 @@ const ContactUsSection = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
+    
+    // Simulate form submission
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
+    setIsSubmitting(false);
+    setIsSubmitted(true);
+    
+    // Reset form after 3 seconds
+    setTimeout(() => {
+      setIsSubmitted(false);
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        serviceType: "",
+        message: ""
+      });
+    }, 3000);
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-16 sm:py-20 lg:py-24">
+    <section 
+      ref={sectionRef}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden py-16 sm:py-20 lg:py-24"
+    >
       {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+      <div ref={bgRef} className="absolute inset-0 z-0">
         <Image
           src="https://framerusercontent.com/images/qoB8bXHN9U9eSjbTM8O7NLGoXI.png?width=3200&height=1734"
           alt="Modern interior background"
@@ -62,30 +140,66 @@ const ContactUsSection = () => {
 
           {/* Right Side - Contact Form */}
           <div className="w-full max-w-md mx-auto lg:max-w-lg xl:max-w-xl">
-            <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 lg:p-10">
+            <motion.div 
+              ref={formRef}
+              className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 lg:p-10"
+              whileHover={{ 
+                scale: 1.02,
+                boxShadow: '0 25px 50px rgba(0,0,0,0.15)',
+                transition: { duration: 0.3 }
+              }}
+            >
               {/* Form Header */}
-              <div className="mb-6 sm:mb-8">
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2 sm:mb-3">
+              <motion.div 
+                className="mb-6 sm:mb-8"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <motion.h2 
+                  className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2 sm:mb-3"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                >
                   Get In Touch
-                </h2>
-                <p className="text-gray-600 text-base sm:text-lg">
+                </motion.h2>
+                <motion.p 
+                  className="text-gray-600 text-base sm:text-lg"
+                  whileHover={{ scale: 1.01 }}
+                  transition={{ duration: 0.3 }}
+                >
                   We will get back to you within 24 hours.
-                </p>
-              </div>
+                </motion.p>
+              </motion.div>
 
               {/* Contact Form */}
-              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+              <motion.form 
+                onSubmit={handleSubmit} 
+                className="space-y-4 sm:space-y-6"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
                 {/* Full Name */}
-                <div>
-                  <Input
-                    type="text"
-                    placeholder="Full Name"
-                    value={formData.fullName}
-                    onChange={(e) => handleInputChange("fullName", e.target.value)}
-                    className="h-12 sm:h-14 text-base sm:text-lg border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    required
-                  />
-                </div>
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: 0.5 }}
+                >
+                  <motion.div
+                    whileFocus={{ scale: 1.02 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Input
+                      type="text"
+                      placeholder="Full Name"
+                      value={formData.fullName}
+                      onChange={(e) => handleInputChange("fullName", e.target.value)}
+                      className="h-12 sm:h-14 text-base sm:text-lg border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                      required
+                    />
+                  </motion.div>
+                </motion.div>
 
                 {/* Email */}
                 <div>
@@ -138,17 +252,61 @@ const ContactUsSection = () => {
                 </div>
 
                 {/* Submit Button */}
-                <Button
-                  type="submit"
-                  className="w-full h-12 sm:h-14 bg-gradient-to-r from-pink-500 to-red-500 hover:from-pink-600 hover:to-red-600 text-white text-base sm:text-lg font-semibold rounded-xl transition-all duration-300 hover:shadow-xl"
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.9 }}
                 >
-                  Get Started Now
-                </Button>
-              </form>
-
-
-              
-            </div>
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting || isSubmitted}
+                      className={`w-full h-12 sm:h-14 text-white text-base sm:text-lg font-semibold rounded-xl transition-all duration-300 hover:shadow-xl ${
+                        isSubmitted 
+                          ? 'bg-green-500 hover:bg-green-600' 
+                          : isSubmitting
+                          ? 'bg-blue-500 hover:bg-blue-600'
+                          : 'bg-gradient-to-r from-pink-500 to-red-500 hover:from-pink-600 hover:to-red-600'
+                      }`}
+                    >
+                      {isSubmitted ? (
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          className="flex items-center gap-2"
+                        >
+                          <motion.div
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 0.5 }}
+                          >
+                            ✓
+                          </motion.div>
+                          Message Sent!
+                        </motion.div>
+                      ) : isSubmitting ? (
+                        <motion.div
+                          className="flex items-center gap-2"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                        >
+                          <motion.div
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+                            className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
+                          />
+                          Sending...
+                        </motion.div>
+                      ) : (
+                        'Get Started Now'
+                      )}
+                    </Button>
+                  </motion.div>
+                </motion.div>
+              </motion.form>
+            </motion.div>
           </div>
         </div>
       </div>

@@ -1,9 +1,12 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 interface NavItem {
   label: string;
@@ -72,14 +75,89 @@ const NavigationBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
+  
+  const navRef = useRef<HTMLElement>(null);
+  const logoRef = useRef<HTMLAnchorElement>(null);
+  const navItemsRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Initialize scroll state immediately
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
 
+    // Check initial scroll position immediately
+    handleScroll();
+    
+    // Also check after a small delay to catch any race conditions
+    const timeoutId = setTimeout(handleScroll, 100);
+
+    // Animate navigation on scroll
+    if (navRef.current) {
+      gsap.fromTo(navRef.current, 
+        { y: -100, opacity: 0 },
+        { 
+          y: 0, 
+          opacity: 1, 
+          duration: 0.8, 
+          ease: 'power2.out' 
+        }
+      );
+    }
+
+    // Animate logo
+    if (logoRef.current) {
+      gsap.fromTo(logoRef.current,
+        { scale: 0.8, opacity: 0 },
+        { 
+          scale: 1, 
+          opacity: 1, 
+          duration: 0.6, 
+          ease: 'back.out(1.7)',
+          delay: 0.2
+        }
+      );
+    }
+
+    // Animate navigation items
+    if (navItemsRef.current) {
+      gsap.fromTo(navItemsRef.current.children,
+        { y: -20, opacity: 0 },
+        { 
+          y: 0, 
+          opacity: 1, 
+          duration: 0.6, 
+          ease: 'power2.out',
+          stagger: 0.1,
+          delay: 0.4
+        }
+      );
+    }
+
+    // Animate CTA button
+    if (ctaRef.current) {
+      gsap.fromTo(ctaRef.current,
+        { scale: 0.8, opacity: 0 },
+        { 
+          scale: 1, 
+          opacity: 1, 
+          duration: 0.6, 
+          ease: 'back.out(1.7)',
+          delay: 0.6
+        }
+      );
+    }
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   // Cleanup timeout on unmount
@@ -110,140 +188,269 @@ const NavigationBar = () => {
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 w-full z-50 py-5 px-[30px] transition-colors duration-300 ${isScrolled ? 'bg-[rgba(10,10,10,0.7)] backdrop-blur-sm' : 'bg-transparent'}`}
+      <motion.header
+        ref={navRef}
+        className="fixed top-0 left-0 w-full z-50 py-5 px-[30px] transition-all duration-500"
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+        style={{
+          backgroundColor: isScrolled ? 'rgba(10,10,10,0.9)' : 'transparent',
+          backdropFilter: isScrolled ? 'blur(12px)' : 'none',
+          boxShadow: isScrolled ? '0 4px 20px rgba(0,0,0,0.1)' : 'none'
+        }}
       >
         <div className="mx-auto flex justify-between items-center max-w-[1219px] h-[45.59px]">
-          <Link href="/" className="flex items-center gap-2" aria-label="First Rate Mortgage Inc. homepage">
-            <Image
-              src="/image.png"
-              alt="First Rate Mortgage Logo"
-              width={35}
-              height={35}
-              priority
-              className="object-contain"
-            />
-            <span className="text-white text-xl sm:text-2xl font-bold tracking-tight">FRMI</span>
-          </Link>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Link 
+              ref={logoRef}
+              href="/" 
+              className="flex items-center gap-2" 
+              aria-label="First Rate Mortgage Inc. homepage"
+            >
+              <motion.div
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.6 }}
+              >
+                <Image
+                  src="/image.png"
+                  alt="First Rate Mortgage Logo"
+                  width={35}
+                  height={35}
+                  priority
+                  className="object-contain"
+                />
+              </motion.div>
+              <span className="text-white text-xl sm:text-2xl font-bold tracking-tight">FRMI</span>
+            </Link>
+          </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center bg-[rgba(25,25,25,0.2)] rounded-md px-4 py-2.5 gap-x-[20px]">
-            {navItems.map((item) => (
-              <div key={item.label} className="relative">
+          <nav 
+            ref={navItemsRef}
+            className="hidden lg:flex items-center bg-[rgba(25,25,25,0.2)] rounded-md px-4 py-2.5 gap-x-[20px]"
+          >
+            {navItems.map((item, index) => (
+              <motion.div 
+                key={item.label} 
+                className="relative"
+                initial={{ y: -20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+              >
                 {item.hasDropdown ? (
                   <div 
                     className="relative dropdown-container"
                     onMouseEnter={() => handleDropdownEnter(item.label)}
                     onMouseLeave={handleDropdownLeave}
                   >
-                    <Link
-                      href={item.href}
-                      className="navigation-link flex items-center gap-1.5 text-white hover:text-opacity-80 transition-opacity py-2 px-2"
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
                     >
-                      {item.label}
-                      <ChevronDown size={14} className="mt-0.5" />
-                    </Link>
-                    {activeDropdown === item.label && (
-                      <div className="absolute top-full left-0 w-56 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-[60] before:absolute before:-top-1 before:left-0 before:right-0 before:h-1 before:bg-transparent">
-                        {item.dropdownItems?.map((dropdownItem) => (
-                          <Link
-                            key={dropdownItem.label}
-                            href={dropdownItem.href}
-                            className="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors text-sm"
-                          >
-                            {dropdownItem.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
+                      <Link
+                        href={item.href}
+                        className="navigation-link flex items-center gap-1.5 text-white hover:text-primary transition-all duration-300 py-2 px-2"
+                      >
+                        {item.label}
+                        <motion.div
+                          animate={{ rotate: activeDropdown === item.label ? 180 : 0 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <ChevronDown size={14} className="mt-0.5" />
+                        </motion.div>
+                      </Link>
+                    </motion.div>
+                    
+                    <AnimatePresence>
+                      {activeDropdown === item.label && (
+                        <motion.div 
+                          initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute top-full left-0 w-56 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-[60] before:absolute before:-top-1 before:left-0 before:right-0 before:h-1 before:bg-transparent"
+                        >
+                          {item.dropdownItems?.map((dropdownItem, idx) => (
+                            <motion.div
+                              key={dropdownItem.label}
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.2, delay: idx * 0.05 }}
+                            >
+                              <Link
+                                href={dropdownItem.href}
+                                className="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors text-sm"
+                              >
+                                {dropdownItem.label}
+                              </Link>
+                            </motion.div>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 ) : (
-                  <Link
-                    href={item.href}
-                    className="navigation-link text-white hover:text-opacity-80 transition-opacity py-2 px-2"
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    {item.label}
-                  </Link>
+                    <Link
+                      href={item.href}
+                      className="navigation-link text-white hover:text-primary transition-all duration-300 py-2 px-2"
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.div>
                 )}
-              </div>
+              </motion.div>
             ))}
           </nav>
 
           {/* Special CTA Button */}
-          <Link
-            href="/apply"
-            className="hidden lg:inline-flex items-center justify-center bg-primary text-dark-gray px-6 py-3 rounded-lg text-sm font-semibold hover:bg-opacity-90 transition-all hover:shadow-lg"
+          <motion.div
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.2 }}
           >
-            Get Pre-Approved
-          </Link>
+            <Link
+              ref={ctaRef}
+              href="/apply"
+              className="hidden lg:inline-flex items-center justify-center bg-primary text-dark-gray px-6 py-3 rounded-lg text-sm font-semibold hover:bg-opacity-90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 cursor-pointer"
+            >
+              Get Pre-Approved
+            </Link>
+          </motion.div>
 
           {/* Mobile Menu Button */}
-          <div className="lg:hidden">
-            <button onClick={() => setIsMenuOpen(true)} className="text-white p-2" aria-label="Open menu">
+          <motion.div 
+            className="lg:hidden"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <button 
+              onClick={() => setIsMenuOpen(true)} 
+              className="text-white p-2" 
+              aria-label="Open menu"
+            >
               <Menu size={28} />
             </button>
-          </div>
+          </motion.div>
         </div>
-      </header>
+      </motion.header>
       
       {/* Mobile Menu Overlay */}
-      <div
-        className={`fixed inset-0 bg-dark-gray z-[70] lg:hidden transition-opacity duration-300 ease-in-out ${
-          isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
-        }`}
-        onClick={() => setIsMenuOpen(false)}
-      >
-        <div
-          className="bg-dark-gray w-full h-full p-8 flex flex-col items-center justify-center"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <button onClick={() => setIsMenuOpen(false)} className="absolute top-7 right-7 text-white p-2" aria-label="Close menu">
-            <X size={30} />
-          </button>
-          
-          <nav className="flex flex-col gap-8 text-center mb-12">
-            {navItems.map((item) => (
-              <div key={item.label} className="flex flex-col items-center">
-                {item.hasDropdown ? (
-                  <div className="flex flex-col items-center gap-4">
-                    <div className="text-white text-xl font-medium">
-                      {item.label}
-                    </div>
-                    <div className="flex flex-col gap-3">
-                      {item.dropdownItems?.map((dropdownItem) => (
-                        <Link
-                          key={dropdownItem.label}
-                          href={dropdownItem.href}
-                          onClick={() => setIsMenuOpen(false)}
-                          className="text-white/80 text-lg hover:text-white transition-colors px-4 py-2 rounded-lg hover:bg-white/10"
-                        >
-                          {dropdownItem.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                ) : (
-                  <Link
-                    href={item.href}
-                    onClick={() => setIsMenuOpen(false)}
-                    className="text-white text-xl font-medium hover:text-opacity-80 transition-opacity px-4 py-2 rounded-lg hover:bg-white/10"
-                  >
-                    {item.label}
-                  </Link>
-                )}
-              </div>
-            ))}
-          </nav>
-
-          <Link
-            href="/apply"
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 bg-dark-gray z-[70] lg:hidden"
             onClick={() => setIsMenuOpen(false)}
-            className="bg-primary text-dark-gray px-8 py-4 rounded-lg text-lg font-semibold hover:bg-opacity-90 transition-all"
           >
-            Get Pre-Approved
-          </Link>
-        </div>
-      </div>
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ duration: 0.4, ease: 'easeInOut' }}
+              className="bg-dark-gray w-full h-full p-8 flex flex-col items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <motion.button 
+                onClick={() => setIsMenuOpen(false)} 
+                className="absolute top-7 right-7 text-white p-2" 
+                aria-label="Close menu"
+                whileHover={{ scale: 1.1, rotate: 90 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ duration: 0.2 }}
+              >
+                <X size={30} />
+              </motion.button>
+          
+              <motion.nav 
+                className="flex flex-col gap-8 text-center mb-12"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                {navItems.map((item, index) => (
+                  <motion.div 
+                    key={item.label} 
+                    className="flex flex-col items-center"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+                  >
+                    {item.hasDropdown ? (
+                      <div className="flex flex-col items-center gap-4">
+                        <motion.div 
+                          className="text-white text-xl font-medium"
+                          whileHover={{ scale: 1.05 }}
+                        >
+                          {item.label}
+                        </motion.div>
+                        <div className="flex flex-col gap-3">
+                          {item.dropdownItems?.map((dropdownItem, idx) => (
+                            <motion.div
+                              key={dropdownItem.label}
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.3, delay: 0.5 + idx * 0.05 }}
+                            >
+                              <Link
+                                href={dropdownItem.href}
+                                onClick={() => setIsMenuOpen(false)}
+                                className="text-white/80 text-lg hover:text-white transition-colors px-4 py-2 rounded-lg hover:bg-white/10"
+                              >
+                                {dropdownItem.label}
+                              </Link>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </div>
+                    ) : (
+                      <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <Link
+                          href={item.href}
+                          onClick={() => setIsMenuOpen(false)}
+                          className="text-white text-xl font-medium hover:text-primary transition-colors px-4 py-2 rounded-lg hover:bg-white/10"
+                        >
+                          {item.label}
+                        </Link>
+                      </motion.div>
+                    )}
+                  </motion.div>
+                ))}
+              </motion.nav>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link
+                  href="/apply"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="bg-primary text-dark-gray px-8 py-4 rounded-lg text-lg font-semibold hover:bg-opacity-90 transition-all duration-300 hover:shadow-lg cursor-pointer"
+                >
+                  Get Pre-Approved
+                </Link>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
