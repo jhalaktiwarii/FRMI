@@ -42,8 +42,7 @@ const navItems: NavItem[] = [
     dropdownItems: [
       { label: "Buyers", href: "/real-estate/buyers" },
       { label: "Sellers", href: "/real-estate/sellers" },
-      { label: "Property Valuation", href: "/real-estate/valuation" },
-      { label: "Transaction Support", href: "/real-estate/transaction" }
+      { label: "Property Valuation", href: "/real-estate/valuation" }
     ]
   },
   { label: "Resources", href: "/resources" },
@@ -63,8 +62,7 @@ const navItems: NavItem[] = [
     hasDropdown: true,
     dropdownItems: [
       { label: "Structured Settlements", href: "/funding/structured-settlements" },
-      { label: "Annuities", href: "/funding/annuities" },
-      { label: "Pre-Settlement Funding", href: "/funding/pre-settlement" },
+      { label: "Pre-Settlement", href: "/funding/pre-settlement" },
       { label: "Lottery Winnings", href: "/funding/lottery" }
     ]
   },
@@ -359,22 +357,22 @@ const NavigationBar = () => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ duration: 0.4, ease: 'easeInOut' }}
-              className="bg-dark-gray w-full h-full p-8 flex flex-col items-center justify-center"
+              className="bg-dark-gray w-full h-full p-4 sm:p-6 md:p-8 flex flex-col items-center justify-start pt-20 overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
               <motion.button 
                 onClick={() => setIsMenuOpen(false)} 
-                className="absolute top-7 right-7 text-white p-2" 
+                className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white p-2 z-10" 
                 aria-label="Close menu"
                 whileHover={{ scale: 1.1, rotate: 90 }}
                 whileTap={{ scale: 0.9 }}
                 transition={{ duration: 0.2 }}
               >
-                <X size={30} />
+                <X size={24} className="sm:w-8 sm:h-8" />
               </motion.button>
           
               <motion.nav 
-                className="flex flex-col gap-8 text-center mb-12"
+                className="flex flex-col gap-3 sm:gap-4 text-center mb-6 sm:mb-8 w-full max-w-xs"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
@@ -388,25 +386,26 @@ const NavigationBar = () => {
                     transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
                   >
                     {item.hasDropdown ? (
-                      <div className="flex flex-col items-center gap-4">
+                      <div className="flex flex-col items-center gap-1 w-full">
                         <motion.div 
-                          className="text-white text-xl font-medium"
+                          className="text-white text-base sm:text-lg font-medium mb-1"
                           whileHover={{ scale: 1.05 }}
                         >
                           {item.label}
                         </motion.div>
-                        <div className="flex flex-col gap-3">
+                        <div className="flex flex-col gap-0.5 w-full">
                           {item.dropdownItems?.map((dropdownItem, idx) => (
                             <motion.div
                               key={dropdownItem.label}
                               initial={{ opacity: 0, x: -20 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ duration: 0.3, delay: 0.5 + idx * 0.05 }}
+                              className="w-full"
                             >
                               <Link
                                 href={dropdownItem.href}
                                 onClick={() => setIsMenuOpen(false)}
-                                className="text-white/80 text-lg hover:text-white transition-colors px-4 py-2 rounded-lg hover:bg-white/10"
+                                className="text-white/70 text-xs sm:text-sm hover:text-white transition-colors px-2 py-1 rounded hover:bg-white/10 block w-full text-center"
                               >
                                 {dropdownItem.label}
                               </Link>
@@ -418,11 +417,12 @@ const NavigationBar = () => {
                       <motion.div
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
+                        className="w-full"
                       >
                         <Link
                           href={item.href}
                           onClick={() => setIsMenuOpen(false)}
-                          className="text-white text-xl font-medium hover:text-primary transition-colors px-4 py-2 rounded-lg hover:bg-white/10"
+                          className="text-white text-base sm:text-lg font-medium hover:text-primary transition-colors px-2 py-1 rounded hover:bg-white/10 block w-full text-center"
                         >
                           {item.label}
                         </Link>
@@ -438,11 +438,12 @@ const NavigationBar = () => {
                 transition={{ duration: 0.6, delay: 0.8 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                className="w-full max-w-xs"
               >
                 <Link
                   href="/apply"
                   onClick={() => setIsMenuOpen(false)}
-                  className="bg-primary text-dark-gray px-8 py-4 rounded-lg text-lg font-semibold hover:bg-opacity-90 transition-all duration-300 hover:shadow-lg cursor-pointer"
+                  className="bg-primary text-dark-gray px-4 py-2 sm:px-6 sm:py-3 rounded-lg text-sm sm:text-base font-semibold hover:bg-opacity-90 transition-all duration-300 hover:shadow-lg cursor-pointer block w-full text-center"
                 >
                   Get Pre-Approved
                 </Link>
