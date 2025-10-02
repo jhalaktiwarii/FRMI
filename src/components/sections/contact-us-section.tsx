@@ -85,23 +85,37 @@ const ContactUsSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    // Create WhatsApp message with form data
+    const whatsappMessage = `Hello! I'm interested in your services.
+
+*Name:* ${formData.fullName}
+*Email:* ${formData.email}
+*Phone:* ${formData.phone}
+*Service Type:* ${formData.serviceType}
+*Message:* ${formData.message}
+
+Please contact me to discuss further.`;
+
+    // Encode the message for URL
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    const whatsappUrl = `https://wa.me/18185551212?text=${encodedMessage}`;
+    
+    // Simulate brief loading
+    await new Promise(resolve => setTimeout(resolve, 1000));
     
     setIsSubmitting(false);
-    setIsSubmitted(true);
     
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        fullName: "",
-        email: "",
-        phone: "",
-        serviceType: "",
-        message: ""
-      });
-    }, 3000);
+    // Redirect to WhatsApp
+    window.open(whatsappUrl, '_blank');
+    
+    // Reset form
+    setFormData({
+      fullName: "",
+      email: "",
+      phone: "",
+      serviceType: "",
+      message: ""
+    });
   };
 
   return (
@@ -284,7 +298,7 @@ const ContactUsSection = () => {
                           >
                             ✓
                           </motion.div>
-                          Message Sent!
+                          Opening WhatsApp...
                         </motion.div>
                       ) : isSubmitting ? (
                         <motion.div
@@ -297,7 +311,7 @@ const ContactUsSection = () => {
                             transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
                             className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
                           />
-                          Sending...
+                          Preparing WhatsApp...
                         </motion.div>
                       ) : (
                         'Get Started Now'

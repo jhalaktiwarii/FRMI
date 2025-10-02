@@ -196,7 +196,7 @@ export default function ServicesSection() {
            <ServiceComparisonRow
             card1={{
               imageSrc: serviceImages.buyerRep,
-              title: "Find the right home — with the right financing",
+              title: "Helping California Buyers Find — and Finance — Their Homes.",
               points: [
                 "We represent buyers at every stage: property search, negotiations, inspections, and closing.",
                 "With FRMI, you get the unique advantage of real estate guidance and mortgage expertise under one roof.",
@@ -206,7 +206,7 @@ export default function ServicesSection() {
             }}
             card2={{
               imageSrc: serviceImages.sellerRep,
-              title: "Sell with confidence, backed by market expertise.",
+              title: "Maximize Your Property Value With Expert Representation.",
               points: [
                 "We provide professional listing, staging, and marketing strategies to maximize your property's value.",
                 "Our agents combine local market insight with brokerage and lending knowledge to attract the right buyers.",
@@ -220,7 +220,7 @@ export default function ServicesSection() {
           <ServiceComparisonRow
             card1={{
               imageSrc: serviceImages.transaction,
-              title: "Every detail managed — so nothing slips through",
+              title: "Seamless Transactions, From Start to Finish.",
               points: [
                 "Paperwork, deadlines, escrow, and compliance — we coordinate every step to keep your transaction on track.",
                 "Our team ensures seamless communication between buyers, sellers, lenders, and escrow officers.",
@@ -230,7 +230,7 @@ export default function ServicesSection() {
             }}
             card2={{
               imageSrc: serviceImages.valuation,
-              title: "Know your property's true worth",
+              title: "Know Your Property's True Worth.",
               points: [
                 "Whether buying or selling, accurate property valuation is critical.",
                 "We provide comparative market analysis and coordinate professional appraisals.",

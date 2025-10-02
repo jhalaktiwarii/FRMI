@@ -14,6 +14,8 @@ interface CtaSectionProps {
   secondaryButtonText?: string;
   onPrimaryClick?: () => void;
   onSecondaryClick?: () => void;
+  primaryHref?: string;
+  secondaryHref?: string;
   backgroundImage?: string;
   showBackgroundImage?: boolean;
   variant?: 'large' | 'small';
@@ -26,6 +28,8 @@ const CtaSection = ({
   secondaryButtonText,
   onPrimaryClick,
   onSecondaryClick,
+  primaryHref,
+  secondaryHref,
   backgroundImage = "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/fb03db6c-5ef0-4c5d-a106-339f02e1dcca-housepluss-framer-website/assets/images/dFol0F6lVSF6XLFt63C7VOOrp1w-18.png",
   showBackgroundImage = true,
   variant = 'large'
@@ -134,14 +138,25 @@ const CtaSection = ({
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.2 }}
           >
-            <Button
-              onClick={onPrimaryClick}
-              className={`bg-dark-gray text-white rounded-lg font-semibold hover:bg-gray-800 transition-all hover:shadow-lg cursor-pointer ${
-                isSmall ? 'px-6 py-3 text-sm' : 'px-8 py-4'
-              }`}
-            >
-              {primaryButtonText}
-            </Button>
+            {primaryHref ? (
+              <a
+                href={primaryHref}
+                className={`inline-block bg-dark-gray text-white rounded-lg font-semibold hover:bg-gray-800 transition-all hover:shadow-lg cursor-pointer ${
+                  isSmall ? 'px-6 py-3 text-sm' : 'px-8 py-4'
+                }`}
+              >
+                {primaryButtonText}
+              </a>
+            ) : (
+              <Button
+                onClick={onPrimaryClick}
+                className={`bg-dark-gray text-white rounded-lg font-semibold hover:bg-gray-800 transition-all hover:shadow-lg cursor-pointer ${
+                  isSmall ? 'px-6 py-3 text-sm' : 'px-8 py-4'
+                }`}
+              >
+                {primaryButtonText}
+              </Button>
+            )}
           </motion.div>
           {secondaryButtonText && (
             <motion.div
@@ -149,15 +164,26 @@ const CtaSection = ({
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.2 }}
             >
-              <Button
-                onClick={onSecondaryClick}
-                variant="outline"
-                className={`bg-white text-dark-gray rounded-lg font-semibold hover:bg-gray-100 transition-all hover:shadow-lg border-dark-gray cursor-pointer ${
-                  isSmall ? 'px-6 py-3 text-sm' : 'px-8 py-4'
-                }`}
-              >
-                {secondaryButtonText}
-              </Button>
+              {secondaryHref ? (
+                <a
+                  href={secondaryHref}
+                  className={`inline-block bg-white text-dark-gray rounded-lg font-semibold hover:bg-gray-100 transition-all hover:shadow-lg border border-dark-gray cursor-pointer ${
+                    isSmall ? 'px-6 py-3 text-sm' : 'px-8 py-4'
+                  }`}
+                >
+                  {secondaryButtonText}
+                </a>
+              ) : (
+                <Button
+                  onClick={onSecondaryClick}
+                  variant="outline"
+                  className={`bg-white text-dark-gray rounded-lg font-semibold hover:bg-gray-100 transition-all hover:shadow-lg border-dark-gray cursor-pointer ${
+                    isSmall ? 'px-6 py-3 text-sm' : 'px-8 py-4'
+                  }`}
+                >
+                  {secondaryButtonText}
+                </Button>
+              )}
             </motion.div>
           )}
         </motion.div>

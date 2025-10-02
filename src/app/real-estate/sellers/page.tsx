@@ -182,8 +182,11 @@ export default function SellersPage() {
         <CtaSection 
           title="Ready to Maximize Your Home's Value?"
           description="Get expert real estate services and market analysis to sell your home for top dollar"
+          primaryHref="tel:+(818) 555-1212"
           primaryButtonText="Get Property Valuation"
-          secondaryButtonText="Contact Our Team" variant="small"
+          secondaryButtonText="Contact Our Team"
+          secondaryHref="tel:+(818) 555-1212"
+          variant="small"
         />
       </main>
       <FooterSection />

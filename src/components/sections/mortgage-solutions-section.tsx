@@ -9,125 +9,133 @@ const mortgageSolutions = [
     id: "residential",
     icon: "https://framerusercontent.com/images/qy2EcDsrxcRVoJsUJ9gIIyxZX2k.svg",
     title: "Residential Loans",
-    description: "Conventional, FHA, VA, and Jumbo loans tailored for California homebuyers.",
+    description: "Conventional, FHA, VA, and Jumbo loans tailored for California homebuyers. Flexible terms from 10-30 years with competitive rates.",
     features: ["Conventional Loans", "FHA Loans", "VA Loans", "Jumbo Loans"],
-    cta: "Start Application",
+    cta: "Start My Home Loan Application",
     href: "/mortgage/residential"
   },
   {
     id: "commercial",
     icon: "https://framerusercontent.com/images/tBLVXEN81k4UZn51pFiI3lbgkyQ.svg",
     title: "Commercial Loans",
-    description: "Financing for California businesses and investors with flexible structures.",
+    description: "Financing for California businesses and investors. Flexible loan structures with competitive rates for commercial property purchases.",
     features: ["5-20 Year Terms", "Balloon Structures", "Investor Loans", "Development Funding"],
-    cta: "Apply Now",
+    cta: "Apply for Commercial Loan",
     href: "/mortgage/commercial"
   },
   {
     id: "refinancing",
     icon: "https://framerusercontent.com/images/SSJHvYHyGkuNORQRvL2H423fBw.svg",
     title: "Refinancing",
-    description: "Smarter refinancing for better rates and improved cash flow.",
+    description: "Smarter refinancing for better rates and cash flow. Lower your monthly payments or tap into your home's equity.",
     features: ["Lower Interest Rates", "Cash-Out Refinancing", "Adjustable to Fixed", "Rate Reduction"],
-    cta: "Refinance Now",
+    cta: "Refinance My Mortgage",
     href: "/mortgage/refinancing"
   },
   {
     id: "process",
     icon: "https://framerusercontent.com/images/Tpg3e18kWkg9itNKePSQc77Yl44.svg",
     title: "Loan Process",
-    description: "Streamlined process from application to closing with expert guidance.",
+    description: "Our streamlined process makes getting a mortgage simple and transparent. From application to closing, we guide you every step.",
     features: ["Pre-Approval", "Documentation", "Underwriting", "Closing"],
-    cta: "Learn More",
+    cta: "Learn About Our Process",
     href: "/mortgage/process"
   }
 ];
 
 const MortgageSolutionsSection = () => {
   return (
-    <section 
-      className="py-16 bg-white relative mortgage-solutions-section" 
-      style={{ 
-        position: 'static',
-        transform: 'none',
-        willChange: 'auto',
-        isolation: 'isolate'
-      }}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 sm:py-20 lg:py-24 bg-gray-50">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-20">
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Mortgage Solutions
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Choose from our comprehensive range of mortgage products designed to meet your unique financial needs.
+          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+            Choose from our comprehensive range of mortgage products designed to meet your unique financial needs and goals.
           </p>
         </div>
 
-        {/* Cards Grid - Single Row Layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
-          {mortgageSolutions.map((solution) => (
-            <div
-              key={solution.id}
-              className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 h-full flex flex-col"
-            >
+        {/* Cards Grid with Lines */}
+        <div className="relative">
+          {/* Grid Lines */}
+          <div className="absolute inset-0 pointer-events-none">
+            {/* Vertical Dotted Line */}
+            <div className="absolute left-1/2 top-0 bottom-0 w-px transform -translate-x-1/2 hidden md:block">
+              <div className="h-full border-l-2 border-dotted border-gray-500"></div>
+            </div>
+            {/* Horizontal Dotted Line */}
+            <div className="absolute top-1/2 left-0 right-0 h-px transform -translate-y-1/2 hidden md:block">
+              <div className="w-full border-t-2 border-dotted border-gray-500"></div>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            {mortgageSolutions.map((solution, index) => (
+              <div
+                key={solution.id}
+                className="rounded-xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col relative"
+                style={{ backgroundColor: '#F9F7F2' }}
+              >
               {/* Icon */}
-              <div className="w-16 h-16 flex items-center justify-center mb-6 mx-auto mt-6">
-                <Image
-                  src={solution.icon}
-                  alt={`${solution.title} icon`}
-                  width={48}
-                  height={48}
-                  className="w-12 h-12"
-                />
-              </div>
-
-              {/* Content */}
-              <div className="px-6 pb-6 flex flex-col flex-grow">
-                {/* Title */}
-                <h3 className="text-xl font-bold text-gray-900 text-center mb-4">
+              <div className="mb-6">
+                <div className="w-24 h-24 flex items-center justify-center mb-4">
+                  <Image
+                    src={solution.icon}
+                    alt={`${solution.title} icon`}
+                    width={64}
+                    height={64}
+                    className="w-16 h-16"
+                  />
+                </div>
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
                   {solution.title}
                 </h3>
+              </div>
 
-                {/* Description */}
-                <p className="text-gray-600 text-sm mb-6 leading-relaxed text-center">
+              {/* Description */}
+              <div className="mb-6 min-h-[80px]">
+                <p className="text-gray-600 leading-relaxed">
                   {solution.description}
                 </p>
+              </div>
 
-                {/* Features */}
-                <ul className="space-y-3 mb-8 flex-grow">
-                  {solution.features.slice(0, 2).map((feature, index) => (
-                    <li key={index} className="flex items-center text-sm text-gray-700">
-                      <div className="w-2 h-2 rounded-full mr-3 bg-green-500 flex-shrink-0"></div>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
+              {/* Features */}
+              <ul className="space-y-2 mb-8">
+                {solution.features.map((feature, index) => (
+                  <li key={index} className="flex items-center text-sm text-gray-700">
+                    <div className="w-2 h-2 rounded-full mr-3 flex-shrink-0 bg-primary"></div>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
 
-                {/* CTA Button - Always at bottom */}
-                <Link
-                  href={solution.href}
-                  className="block w-full text-center bg-green-500 text-white px-4 py-3 rounded-lg text-sm font-medium hover:bg-green-600 transition-colors duration-200 mt-auto"
+              {/* CTA Button */}
+              <div className="mt-auto">
+                <a
+                  href="tel:+(818) 555-1212"
+                  className="inline-block bg-primary text-dark-gray px-6 py-3 rounded-lg font-semibold text-sm hover:bg-opacity-90 transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95"
                 >
                   {solution.cta}
-                </Link>
+                </a>
               </div>
             </div>
           ))}
+          </div>
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-16">
-          <p className="text-lg text-gray-600 mb-8">
+        <div className="text-center mt-12 sm:mt-16">
+          <p className="text-lg text-gray-600 mb-6">
             Not sure which loan is right for you? Our experts are here to help.
           </p>
-          <Link
-            href="/contact"
-            className="inline-block bg-gray-900 text-white px-8 py-4 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200"
+          <a
+            href="tel:+(818) 555-1212"
+            className="group inline-block bg-gray-900 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 ease-in-out hover:bg-gray-800 hover:shadow-xl hover:shadow-gray-900/25 hover:scale-[1.02] active:scale-[0.98] active:bg-gray-700 border border-transparent hover:border-gray-700/20"
           >
-            Speak with a Mortgage Expert
-          </Link>
+            <span className="relative z-10">Speak with a Mortgage Expert</span>
+          </a>
         </div>
       </div>
     </section>

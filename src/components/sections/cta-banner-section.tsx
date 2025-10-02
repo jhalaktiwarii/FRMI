@@ -54,12 +54,12 @@ const CtaBannerSection = () => {
             Why juggle multiple companies when FRMI offers both mortgages and real estate brokerage in one place? Our integrated model means fewer delays, better communication, and a smoother experience.
           </p>
           
-          <Link
-            href="/apply"
+          <a
+            href="tel:+(818) 555-1212"
             className="inline-block bg-white text-blue-900 px-6 py-3 sm:px-8 sm:py-4 rounded-xl font-semibold text-base sm:text-lg hover:bg-opacity-90 transition-all hover:shadow-xl hover:scale-105 active:scale-95"
           >
             Experience the FRMI Advantage
-          </Link>
+          </a>
         </div>
       </div>
     </section>

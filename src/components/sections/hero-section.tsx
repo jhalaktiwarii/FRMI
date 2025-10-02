@@ -200,13 +200,13 @@ export default function HeroSection() {
           whileTap={{ scale: 0.95 }}
           transition={{ duration: 0.2 }}
         >
-          <Link
+          <a
             ref={ctaRef}
-            href="/apply"
+            href="tel:+(818) 555-1212"
             className="mt-6 sm:mt-8 lg:mt-10 inline-block rounded-lg bg-primary px-6 sm:px-8 py-3 sm:py-4 font-button-text text-sm sm:text-base font-medium text-dark-gray transition-all duration-300 hover:opacity-90 hover:shadow-[0_8px_16px_rgba(154,255,71,0.3)] cursor-pointer"
           >
             Get Pre-Approved for Your Mortgage
-          </Link>
+          </a>
         </motion.div>
       </div>
 

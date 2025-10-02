@@ -183,7 +183,10 @@ export default function BuyersPage() {
           title="Ready to Start Your Home Buying Journey?"
           description="Get pre-approved and connect with our expert real estate and mortgage team"
           primaryButtonText="Get Pre-Approved Today"
-          secondaryButtonText="Contact Our Team" variant="small"
+          secondaryButtonText="Contact Our Team"
+          primaryHref="tel:+(818) 555-1212"
+          secondaryHref="tel:+(818) 555-1212"
+          variant="small"
         />
       </main>
       <FooterSection />
