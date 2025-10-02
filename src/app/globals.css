@@ -5,6 +5,14 @@
 @import "tw-animate-css";
 @custom-variant dark (&:is(.dark *));
 
+/* Prevent scroll interference for mortgage solutions section */
+.mortgage-solutions-section {
+  position: static !important;
+  transform: none !important;
+  will-change: auto !important;
+  isolation: isolate;
+}
+
 @theme {
   /* Shadcn/UI colors */
   --color-background: #ffffff;

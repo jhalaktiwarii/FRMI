@@ -43,90 +43,104 @@ const ServiceCard = ({
   title, 
   points, 
   cta, 
-  isLeft = true 
+  index 
 }: { 
   imageSrc: string; 
   title: string; 
   points: string[]; 
   cta: string; 
-  isLeft?: boolean;
+  index: number;
 }) => {
   return (
     <motion.div
       variants={sectionVariants}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`flex flex-col lg:flex-row items-center gap-8 ${isLeft ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}
+      className="w-full lg:w-1/2"
     >
-      {/* Image Section */}
-      <div className="w-full lg:w-1/2">
-        <motion.div
-          whileHover={{ scale: 1.02, y: -5 }}
-          transition={{ duration: 0.3 }}
-          className="relative rounded-2xl overflow-hidden shadow-2xl group"
-        >
+      <motion.div
+        className="h-full bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100"
+      >
+        {/* Image Section */}
+        <div className="relative h-64 overflow-hidden">
           <Image
             src={imageSrc}
             alt={title}
             width={600}
-            height={400}
-            className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110"
+            height={256}
+            className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        </motion.div>
-      </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+        </div>
 
-      {/* Content Section */}
-      <div className="w-full lg:w-1/2 space-y-6">
-        <motion.h3 
-          initial={{ opacity: 0, x: isLeft ? -30 : 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight"
-        >
-          {title}
-        </motion.h3>
+        {/* Content Section */}
+        <div className="p-8 space-y-6 h-full flex flex-col">
+          <motion.h3 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+            className="text-2xl lg:text-3xl font-bold text-gray-900 leading-tight"
+          >
+            {title}
+          </motion.h3>
 
-        <motion.div
-          initial={{ opacity: 0, x: isLeft ? -30 : 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="space-y-4"
-        >
-          {points.map((point, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: isLeft ? -20 : 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-              className="flex items-start gap-3"
-            >
-              <div className="w-2 h-2 bg-blue-600 rounded-full mt-3 flex-shrink-0" />
-              <p className="text-lg text-gray-700 leading-relaxed">{point}</p>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-        >
           <motion.div
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+            className="space-y-3 flex-grow"
+          >
+            {points.map((point, pointIndex) => (
+              <motion.div
+                key={pointIndex}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.6 + index * 0.1 + pointIndex * 0.1 }}
+                className="flex items-start gap-3"
+              >
+                <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0" />
+                <p className="text-gray-700 leading-relaxed">{point}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
           >
             <Button
-              className="h-auto rounded-lg bg-primary px-8 py-4 text-base font-medium text-primary-foreground transition-colors hover:bg-primary/90 hover:shadow-[0_8px_16px_rgba(154,255,71,0.3)]"
+              className="w-full h-auto rounded-lg bg-blue-600 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-700"
             >
               {cta}
             </Button>
           </motion.div>
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+const ServiceComparisonRow = ({ 
+  card1, 
+  card2 
+}: { 
+  card1: { imageSrc: string; title: string; points: string[]; cta: string };
+  card2: { imageSrc: string; title: string; points: string[]; cta: string };
+}) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+      className="flex flex-col lg:flex-row gap-8 lg:gap-6"
+    >
+      <ServiceCard {...card1} index={0} />
+      <ServiceCard {...card2} index={1} />
     </motion.div>
   );
 };
@@ -143,7 +157,7 @@ export default function ServicesSection() {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-emerald-500 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="container mx-auto px-5 md:px-10 lg:px-20 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -177,67 +191,54 @@ export default function ServicesSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="space-y-20"
+          className="space-y-16"
         >
-          {/* Buyer & Seller Representation */}
-          <div className="space-y-16">
-
-            {/* Buyer Representation */}
-            <ServiceCard
-              imageSrc={serviceImages.buyerRep}
-              title="Find the right home — with the right financing"
-              points={[
+           <ServiceComparisonRow
+            card1={{
+              imageSrc: serviceImages.buyerRep,
+              title: "Find the right home — with the right financing",
+              points: [
                 "We represent buyers at every stage: property search, negotiations, inspections, and closing.",
                 "With FRMI, you get the unique advantage of real estate guidance and mortgage expertise under one roof.",
                 "We simplify the process, saving you time, money, and stress."
-              ]}
-              cta="Find My Dream Home"
-              isLeft={true}
-            />
-
-            {/* Seller Representation */}
-            <ServiceCard
-              imageSrc={serviceImages.sellerRep}
-              title="Sell with confidence, backed by market expertise."
-              points={[
+              ],
+              cta: "Find My Dream Home"
+            }}
+            card2={{
+              imageSrc: serviceImages.sellerRep,
+              title: "Sell with confidence, backed by market expertise.",
+              points: [
                 "We provide professional listing, staging, and marketing strategies to maximize your property's value.",
                 "Our agents combine local market insight with brokerage and lending knowledge to attract the right buyers.",
                 "You get a streamlined sale, from pricing to escrow closing."
-              ]}
-              cta="List My Home Today"
-              isLeft={false}
-            />
-          </div>
+              ],
+              cta: "List My Home Today"
+            }}
+          />
 
-          {/* Transaction & Valuation */}
-          <div className="space-y-16">
-
-            {/* Transaction Coordination */}
-            <ServiceCard
-              imageSrc={serviceImages.transaction}
-              title="Every detail managed — so nothing slips through"
-              points={[
+          {/* Transaction & Valuation Row */}
+          <ServiceComparisonRow
+            card1={{
+              imageSrc: serviceImages.transaction,
+              title: "Every detail managed — so nothing slips through",
+              points: [
                 "Paperwork, deadlines, escrow, and compliance — we coordinate every step to keep your transaction on track.",
                 "Our team ensures seamless communication between buyers, sellers, lenders, and escrow officers.",
                 "You stay informed while we handle the complexities."
-              ]}
-              cta="Simplify My Transaction"
-              isLeft={true}
-            />
-
-            {/* Property Valuation Support */}
-            <ServiceCard
-              imageSrc={serviceImages.valuation}
-              title="Know your property's true worth"
-              points={[
+              ],
+              cta: "Simplify My Transaction"
+            }}
+            card2={{
+              imageSrc: serviceImages.valuation,
+              title: "Know your property's true worth",
+              points: [
                 "Whether buying or selling, accurate property valuation is critical.",
                 "We provide comparative market analysis and coordinate professional appraisals.",
                 "With FRMI's insight, you make decisions with confidence and clarity."
-              ]}
-              cta="Get My Home Valued"
-              isLeft={false}
-            />
-          </div>
+              ],
+              cta: "Get My Home Valued"
+            }}
+          />
         </motion.div>
       </div>
 

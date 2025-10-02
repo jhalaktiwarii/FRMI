@@ -56,7 +56,7 @@ const FooterSection = () => {
           <div className="absolute inset-0 bg-dark-gray/60"></div>
         </div>
 
-        <div className="container relative z-10 mx-auto py-12 sm:py-16 md:py-20 lg:py-[120px] px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl relative z-10 mx-auto py-12 sm:py-16 md:py-20 lg:py-[120px] px-4 sm:px-6 lg:px-8">
           {/* Main Footer Content */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-8 lg:gap-12 mb-8">
             {/* Company Info */}

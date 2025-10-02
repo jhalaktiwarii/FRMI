@@ -188,21 +188,18 @@ const NavigationBar = () => {
     <>
       <motion.header
         ref={navRef}
-        className="fixed top-0 left-0 w-full z-50 py-5 px-[30px] transition-all duration-500"
+        className="fixed top-0 left-0 w-full z-50 py-5 transition-all duration-500"
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
-        style={{
-          backgroundColor: isScrolled ? 'rgba(10,10,10,0.9)' : 'transparent',
-          backdropFilter: isScrolled ? 'blur(12px)' : 'none',
-          boxShadow: isScrolled ? '0 4px 20px rgba(0,0,0,0.1)' : 'none'
-        }}
       >
-        <div className="mx-auto flex justify-between items-center max-w-[1219px] h-[45.59px]">
+        <div className="mx-auto flex justify-center items-center max-w-7xl px-4 sm:px-6 lg:px-8 h-[45.59px] relative">
+          {/* Logo positioned absolutely on the left */}
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.2 }}
+            className="absolute left-0"
           >
             <Link 
               ref={logoRef}
@@ -212,7 +209,9 @@ const NavigationBar = () => {
             >
               <motion.div
                 whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.6 }}
+                initial={{ opacity: 1 }}
+                animate={{ opacity: isScrolled ? 0 : 1 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
               >
                 <Image
                   src="/image.png"
@@ -223,14 +222,25 @@ const NavigationBar = () => {
                   className="object-contain"
                 />
               </motion.div>
-              <span className="text-white text-xl sm:text-2xl font-bold tracking-tight">FRMI</span>
+              <motion.span 
+                className="text-white text-xl sm:text-2xl font-bold tracking-tight"
+                initial={{ opacity: 1 }}
+                animate={{ opacity: isScrolled ? 0 : 1 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              >
+                FRMI
+              </motion.span>
             </Link>
           </motion.div>
 
           {/* Desktop Navigation */}
           <nav 
             ref={navItemsRef}
-            className="hidden lg:flex items-center bg-[rgba(25,25,25,0.2)] rounded-md px-4 py-2.5 gap-x-[20px]"
+            className={`hidden lg:flex items-center rounded-md px-4 py-2.5 gap-x-[20px] transition-all duration-300 ${
+              isScrolled 
+                ? 'bg-black' 
+                : 'bg-[rgba(25,25,25,0.2)]'
+            }`}
           >
             {navItems.map((item, index) => (
               <motion.div 
@@ -309,11 +319,14 @@ const NavigationBar = () => {
             ))}
           </nav>
 
-          {/* Special CTA Button */}
+          {/* CTA Button positioned absolutely on the right */}
           <motion.div
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.2 }}
+            className="absolute right-0"
+            initial={{ opacity: 1 }}
+            animate={{ opacity: isScrolled ? 0 : 1 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
           >
             <Link
               ref={ctaRef}
