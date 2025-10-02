@@ -114,7 +114,7 @@ const MortgageSolutionsSection = () => {
               {/* CTA Button */}
               <div className="mt-auto">
                 <a
-                  href="tel:+(818) 555-1212"
+                  href="tel:+13102700416"
                   className="inline-block bg-primary text-dark-gray px-6 py-3 rounded-lg font-semibold text-sm hover:bg-opacity-90 transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95"
                 >
                   {solution.cta}
@@ -131,7 +131,7 @@ const MortgageSolutionsSection = () => {
             Not sure which loan is right for you? Our experts are here to help.
           </p>
           <a
-            href="tel:+(818) 555-1212"
+            href="tel:+13102700416"
             className="group inline-block bg-gray-900 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 ease-in-out hover:bg-gray-800 hover:shadow-xl hover:shadow-gray-900/25 hover:scale-[1.02] active:scale-[0.98] active:bg-gray-700 border border-transparent hover:border-gray-700/20"
           >
             <span className="relative z-10">Speak with a Mortgage Expert</span>

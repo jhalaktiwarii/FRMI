@@ -243,10 +243,10 @@ export default function ResidentialLoansPage() {
         <CtaSection 
           title="Ready to Get Pre-Approved?"
           description="Start your home buying journey with our expert mortgage lending services"
-          primaryHref="tel:+(818) 555-1212"
+          primaryHref="tel:+13102700416"
           primaryButtonText="Start My Home Loan Application"
           secondaryButtonText="Contact a Loan Officer"
-          secondaryHref="tel:+(818) 555-1212"
+          secondaryHref="tel:+13102700416"
           variant="small"
         />
       </main>

@@ -98,7 +98,7 @@ Please contact me to discuss further.`;
 
     // Encode the message for URL
     const encodedMessage = encodeURIComponent(whatsappMessage);
-    const whatsappUrl = `https://wa.me/18185551212?text=${encodedMessage}`;
+    const whatsappUrl = `https://wa.me/13102700416?text=${encodedMessage}`;
     
     // Simulate brief loading
     await new Promise(resolve => setTimeout(resolve, 1000));

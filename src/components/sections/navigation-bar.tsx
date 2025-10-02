@@ -318,7 +318,7 @@ const NavigationBar = () => {
           >
             <a
               ref={ctaRef}
-              href="tel:+(818) 555-1212"
+              href="tel:+13102700416"
               className="hidden lg:inline-flex items-center justify-center bg-primary text-dark-gray px-6 py-3 rounded-lg text-sm font-semibold hover:bg-opacity-90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 cursor-pointer"
             >
               Get Pre-Approved
@@ -442,7 +442,7 @@ const NavigationBar = () => {
                 className="w-full max-w-xs"
               >
                 <a
-                  href="tel:+(818) 555-1212"
+                  href="tel:+13102700416"
                   onClick={() => setIsMenuOpen(false)}
                   className="bg-primary text-dark-gray px-4 py-2 sm:px-6 sm:py-3 rounded-lg text-sm sm:text-base font-semibold hover:bg-opacity-90 transition-all duration-300 hover:shadow-lg cursor-pointer block w-full text-center"
                 >

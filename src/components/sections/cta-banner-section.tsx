@@ -55,7 +55,7 @@ const CtaBannerSection = () => {
           </p>
           
           <a
-            href="tel:+(818) 555-1212"
+            href="tel:+13102700416"
             className="inline-block bg-white text-blue-900 px-6 py-3 sm:px-8 sm:py-4 rounded-xl font-semibold text-base sm:text-lg hover:bg-opacity-90 transition-all hover:shadow-xl hover:scale-105 active:scale-95"
           >
             Experience the FRMI Advantage

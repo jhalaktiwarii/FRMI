@@ -184,8 +184,8 @@ export default function BuyersPage() {
           description="Get pre-approved and connect with our expert real estate and mortgage team"
           primaryButtonText="Get Pre-Approved Today"
           secondaryButtonText="Contact Our Team"
-          primaryHref="tel:+(818) 555-1212"
-          secondaryHref="tel:+(818) 555-1212"
+          primaryHref="tel:+13102700416"
+          secondaryHref="tel:+13102700416"
           variant="small"
         />
       </main>

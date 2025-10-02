@@ -180,8 +180,8 @@ export default function ResourcesPage() {
           description="Our expert team is here to help you with any questions about mortgages, real estate, or our services"
           primaryButtonText="Contact Us Today"
           secondaryButtonText="Get Pre-Approved"
-          primaryHref="tel:+(818) 555-1212"
-          secondaryHref="tel:+(818) 555-1212"
+          primaryHref="tel:+13102700416"
+          secondaryHref="tel:+13102700416"
           variant="small"
         />
       </main>

@@ -94,8 +94,8 @@ export default function AboutPage() {
           description="Experience the FRMI advantage with our integrated mortgage and real estate services"
           primaryButtonText="Get Pre-Approved"
           secondaryButtonText="Contact Us Today"
-          primaryHref="tel:+(818) 555-1212"
-          secondaryHref="tel:+(818) 555-1212"
+          primaryHref="tel:+13102700416"
+          secondaryHref="tel:+13102700416"
           variant="small"
         />
       </main>

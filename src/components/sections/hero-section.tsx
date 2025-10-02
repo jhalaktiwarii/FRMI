@@ -202,7 +202,7 @@ export default function HeroSection() {
         >
           <a
             ref={ctaRef}
-            href="tel:+(818) 555-1212"
+            href="tel:+13102700416"
             className="mt-6 sm:mt-8 lg:mt-10 inline-block rounded-lg bg-primary px-6 sm:px-8 py-3 sm:py-4 font-button-text text-sm sm:text-base font-medium text-dark-gray transition-all duration-300 hover:opacity-90 hover:shadow-[0_8px_16px_rgba(154,255,71,0.3)] cursor-pointer"
           >
             Get Pre-Approved for Your Mortgage
@@ -216,8 +216,8 @@ export default function HeroSection() {
         className="absolute bottom-4 sm:bottom-6 left-1/2 w-full max-w-max -translate-x-1/2 z-30 hidden sm:flex"
       >
         <div className="flex flex-col sm:flex-row bg-[rgba(36,36,36,0.2)] backdrop-blur-[10px] rounded-lg sm:rounded-none overflow-hidden">
-          <InfoItem href="tel:+(818) 555-1212">
-            +(818) 555-1212
+          <InfoItem href="tel:+13102700416">
+            +1 (310) 270-0416
           </InfoItem>
           <InfoItem href="mailto:hello@firstratemtginc.com">
             hello@firstratemtginc.com
