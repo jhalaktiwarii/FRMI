@@ -208,28 +208,16 @@ const NavigationBar = () => {
               aria-label="First Rate Mortgage Inc. homepage"
             >
               <motion.div
-                whileHover={{ rotate: 360 }}
                 initial={{ opacity: 1 }}
                 animate={{ opacity: isScrolled ? 0 : 1 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="flex items-center gap-2 sm:gap-3"
               >
-                <Image
-                  src="/image.png"
-                  alt="First Rate Mortgage Logo"
-                  width={35}
-                  height={35}
-                  priority
-                  className="object-contain"
-                />
+                <div className="bg-white text-dark-gray w-6 h-6 sm:w-8 sm:h-8 rounded-md flex items-center justify-center">
+                  <span className="font-bold text-lg sm:text-xl leading-none">F</span>
+                </div>
+                <span className="text-white text-xl sm:text-2xl font-semibold">FRMI</span>
               </motion.div>
-              <motion.span 
-                className="text-white text-xl sm:text-2xl font-bold tracking-tight"
-                initial={{ opacity: 1 }}
-                animate={{ opacity: isScrolled ? 0 : 1 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-              >
-                FRMI
-              </motion.span>
             </Link>
           </motion.div>
 

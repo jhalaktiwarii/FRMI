@@ -66,8 +66,8 @@ const FooterSection = () => {
                 Providing innovative financial solutions that empower individuals and businesses during critical moments of need.
               </p>
               <div className="mt-6 space-y-2">
-                <p className="text-sm text-white/70">Phone: (555) 123-4567</p>
-                <p className="text-sm text-white/70">Email: info@frmi.com</p>
+                <p className="text-sm text-white/70">Phone: (818) 555-1212</p>
+                <p className="text-sm text-white/70">Email: hello@firstratemtginc.com</p>
                 <p className="text-sm text-white/70">Address: California, USA</p>
               </div>
             </div>
@@ -196,12 +196,9 @@ const FooterSection = () => {
           </div>
 
           {/* Bottom Footer */}
-          <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-sm text-white/70 text-center md:text-left">
-              © 2024 FRMI. All rights reserved. | NMLS ID: [Your NMLS ID] | DRE License: [Your DRE License]
-            </p>
-            <p className="text-sm text-white/70 mt-2 md:mt-0">
-              Made with ❤️ by <a href="https://www.sugmaya.com" target="_blank" rel="noopener noreferrer" className="text-primary-green hover:text-primary-green/80 transition-colors">Sugmaya Governance</a>
+          <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-center items-center">
+            <p className="text-sm text-white/70 text-center">
+              © 2024 FRMI. All rights reserved. | NMLS ID: #02322072 | DRE License: #2757821
             </p>
           </div>
         </div>

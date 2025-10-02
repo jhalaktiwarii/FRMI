@@ -216,11 +216,11 @@ export default function HeroSection() {
         className="absolute bottom-4 sm:bottom-6 left-1/2 w-full max-w-max -translate-x-1/2 z-30 hidden sm:flex"
       >
         <div className="flex flex-col sm:flex-row bg-[rgba(36,36,36,0.2)] backdrop-blur-[10px] rounded-lg sm:rounded-none overflow-hidden">
-          <InfoItem href="tel:+(555) 123-4567">
-            +(555) 123-4567
+          <InfoItem href="tel:+(818) 555-1212">
+            +(818) 555-1212
           </InfoItem>
-          <InfoItem href="mailto:hello@frmi.com">
-            hello@frmi.com
+          <InfoItem href="mailto:hello@firstratemtginc.com">
+            hello@firstratemtginc.com
           </InfoItem>
           <InfoItem isLast>
             Licensed California Mortgage Lender & Real Estate Broker
