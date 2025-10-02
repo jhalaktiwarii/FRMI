@@ -66,7 +66,7 @@ const FooterSection = () => {
                 Providing innovative financial solutions that empower individuals and businesses during critical moments of need.
               </p>
               <div className="mt-6 space-y-2">
-                <p className="text-sm text-white/70">Phone: (818) 555-1212</p>
+                <p className="text-sm text-white/70">Phone: +1 (310) 270-0416</p>
                 <p className="text-sm text-white/70">Email: hello@firstratemtginc.com</p>
                 <p className="text-sm text-white/70">Address: California, USA</p>
               </div>
